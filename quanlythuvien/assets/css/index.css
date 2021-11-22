@@ -1,0 +1,44 @@
+﻿body {
+}
+.nav-link {
+    font-weight: 700;
+}
+
+.list-group-item {
+    border: none;
+}
+
+#man_hinh_tao_thedocgia {
+    background: whitesmoke;
+}
+
+.site_bar_title {
+    font-weight: 700;
+}
+
+.list-group-item-link-a {
+    color: var(--secondary);
+}
+
+.list-group-item-link :hover {
+    color: red;
+    text-decoration: none;
+}
+
+.list-group-item-link :focus {
+    color: red;
+    font-weight: 600;
+}
+
+.menu-arrow-down {
+    transform: rotate(0deg);
+}
+
+    .menu-arrow-down.open {
+        transform: rotate(180deg);
+    }
+
+.content {
+    height: 500px;
+    background: wheat;
+}
