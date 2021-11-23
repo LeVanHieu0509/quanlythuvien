@@ -5,6 +5,13 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quanlythuvien", "quanlythuvien\quanlythuvien.csproj", "{763F4E04-6B16-4AF4-BA67-6B20985D5F06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{DA412CC5-B57D-4D74-94AF-534C4BA5FF1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0826161-E2E9-4CAC-8222-C719B4626D0A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{763F4E04-6B16-4AF4-BA67-6B20985D5F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{763F4E04-6B16-4AF4-BA67-6B20985D5F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{763F4E04-6B16-4AF4-BA67-6B20985D5F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA412CC5-B57D-4D74-94AF-534C4BA5FF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA412CC5-B57D-4D74-94AF-534C4BA5FF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA412CC5-B57D-4D74-94AF-534C4BA5FF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA412CC5-B57D-4D74-94AF-534C4BA5FF1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./assets/css/index.css" />
-    <link rel="stylesheet" href="./assets/font/fontawesome-free-5.15.4-web/css/all.min.css">
+    @*<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/font/fontawesome-free-5.15.4-web/css/all.min.css">*@
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    @Styles.Render("~/assets/font/fontawesome-free-5.15.4-web/css/all.min.css")
+    @Styles.Render("~/assets/css/index.css")
+
 </head>
 <body>
     <div id="man_hinh_tao_thedocgia">
@@ -21,7 +24,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quản lý thư viện</a>
+                        <a class="nav-link" href="/home">Quản lý thư viện</a>
                     </li>
                 </ul>
             </nav>
@@ -40,10 +43,10 @@
                             <div id="quan_ly_the_doc_gia" class="collapse">
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-link  ">
-                                        <a class="list-group-item-link-a" href="#">Tạo thẻ độc giả</a>
+                                        <a class="list-group-item-link-a" href="#">@Html.ActionLink("Tạo thẻ độc giả", "taothedocgia", "home")</a>
                                     </li>
                                     <li class="list-group-item list-group-item-link ">
-                                        <a class="list-group-item-link-a" href="#">Xem danh sách thẻ độc giả</a>
+                                        <a class="list-group-item-link-a" href="#">@Html.ActionLink("Xem danh sách thẻ độc giả", "xemdanhsachthedocgia", "home")  </a>
                                     </li>
                                 </ul>
                             </div>
