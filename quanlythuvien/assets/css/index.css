@@ -9,7 +9,7 @@
 }
 
 #man_hinh_tao_thedocgia {
-    background: whitesmoke;
+    background: #E7E1E1;
 }
 
 .site_bar_title {
@@ -38,7 +38,4 @@
         transform: rotate(180deg);
     }
 
-.content {
-    height: 500px;
-    background: wheat;
-}
+

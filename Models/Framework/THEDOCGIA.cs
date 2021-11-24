@@ -1,10 +1,11 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.ComponentModel;
 
     [Table("THEDOCGIA")]
     public partial class THEDOCGIA
@@ -18,6 +19,8 @@ namespace Models.Framework
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DisplayName("Mã thẻ độc giả")]
+        [Required(ErrorMessage ="Ban chua nhap ma the doc gia")]
         public int MaTheDocGia { get; set; }
 
         [StringLength(50)]

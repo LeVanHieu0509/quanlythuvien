@@ -68,6 +68,7 @@
     <Compile Include="Framework\THONGTINSACH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThedocgiaModel.cs" />
+    <Compile Include="ThongtinsachModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">

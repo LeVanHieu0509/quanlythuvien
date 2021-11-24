@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <div id="man_hinh_tao_thedocgia">
+    <div id="man_hinh_tao_thedocgia" style="height:1000px">
         <div id="Main" class="main " style="width: 1200px; margin: auto;">
             <nav class="navbar navbar-expand-lg navbar-light bg-danger">
                 <ul class="navbar-nav align-items-center">
@@ -66,7 +66,7 @@
                                         <a class="list-group-item-link-a" href="#">Tiếp nhận sách mới</a>
                                     </li>
                                     <li class="list-group-item list-group-item-link  ">
-                                        <a class="list-group-item-link-a" href="#">Xem danh sách thông tin sách</a>
+                                        <a class="list-group-item-link-a" href="#">@Html.ActionLink("Xem danh sách thông tin sách", "xemdanhsachthongtinsach", "home")</a>
                                     </li>
                                 </ul>
                             </div>
@@ -183,13 +183,9 @@
                     </ul>
                 </div>
                 <div class="col-8">
-                    <div class="content">
-
-                        <div class="container body-content">
+                    <div class="content_page" style="background:#F9F6F6">
                             @RenderBody()
-                            <hr />
-
-                        </div>
+                            <hr />                    
                     </div>
                 </div>
             </div>
