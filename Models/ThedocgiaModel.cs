@@ -30,7 +30,5 @@ namespace Models
             int res = context.Database.ExecuteSqlCommand("Sp_TheDocGia_Insert @HoTenDocGia1, @Diachi1, @Email1, @MaLoaiDocGia1", parameters);
             return res;
         }
-
-
     }
 }

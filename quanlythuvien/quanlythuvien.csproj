@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1888,6 +1889,8 @@
     <Content Include="Views\Home\taothedocgia.cshtml" />
     <Content Include="Views\Home\xemdanhsachthedocgia.cshtml" />
     <Content Include="Views\Home\xemdanhsachthongtinsach.cshtml" />
+    <Content Include="Views\Docgia\xemdanhsachthedocgia.cshtml" />
+    <Content Include="Views\Docgia\taothedocgia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

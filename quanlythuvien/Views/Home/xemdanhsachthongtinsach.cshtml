@@ -1,7 +1,5 @@
-﻿@model List<Models.Framework.THONGTINSACH>
-
-
-
+﻿@using Models.Framework;
+@model dynamic
 
 
 @{
@@ -13,25 +11,39 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">TenSach</th>
-            <th scope="col">TacGia</th>
-            <th scope="col">NamXuatBan</th>
-            <th scope="col">NgayNhap</th>
-            <th scope="col">TriGia</th>
+            <th >TenSach</th>
+            <th >TacGia</th>
+            <th >NhaXuatBan</th>
+            <th >NgayNhap</th>
+            <th >TriGia</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>@item.TenSach</td>
-            <td>@item.TacGia</td>
-            <td>@item.NamXuatBan</td>
-            <td>@item.NgayNhap</td>
-            <td>@item.TriGia</td>
-        </tr>
-        }
+    <tbody> 
 
-
+            @foreach (THONGTINSACH item in Model.thongtinsachList)
+            {
+                <td >@item.TenSach</td>
+            }
+        
+            @foreach (TACGIA item in Model.tacgiaList)
+            {
+                <td >@item.TenTacGia</td>
+            }
+        
+            @foreach (NHAXUATBAN item in Model.nhaxuatbanList)
+            {
+                <td >@item.TenNXB</td>
+            }
+        
+            @foreach (THONGTINSACH item in Model.thongtinsachList)
+            {
+                <td >@item.NgayNhap</td>
+            }
+       
+        
+            @foreach (THONGTINSACH item in Model.thongtinsachList)
+            {
+                <td >@item.TriGia</td>
+            }    
     </tbody>
 </table>
