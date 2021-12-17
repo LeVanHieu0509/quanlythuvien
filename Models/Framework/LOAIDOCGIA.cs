@@ -24,5 +24,8 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THEDOCGIA> THEDOCGIAs { get; set; }
+
+        [NotMapped]
+        public List<LOAIDOCGIA> LoaiDGCollection { get; set; }
     }
 }

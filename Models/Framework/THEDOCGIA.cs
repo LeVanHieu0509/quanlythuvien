@@ -18,7 +18,7 @@
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Mã thẻ độc giả")]
         [Required(ErrorMessage ="Ban chua nhap ma the doc gia")]
         public int MaTheDocGia { get; set; }

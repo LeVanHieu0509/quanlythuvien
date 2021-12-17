@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SachController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1889,8 +1890,12 @@
     <Content Include="Views\Home\taothedocgia.cshtml" />
     <Content Include="Views\Home\xemdanhsachthedocgia.cshtml" />
     <Content Include="Views\Home\xemdanhsachthongtinsach.cshtml" />
-    <Content Include="Views\Docgia\xemdanhsachthedocgia.cshtml" />
-    <Content Include="Views\Docgia\taothedocgia.cshtml" />
+    <Content Include="Views\Docgia\Index.cshtml" />
+    <Content Include="Views\Docgia\ChoosesLoaiDG.cshtml" />
+    <Content Include="Views\Docgia\Create.cshtml" />
+    <Content Include="Views\Sach\Index.cshtml" />
+    <Content Include="Views\Sach\Create.cshtml" />
+    <Content Include="Views\Sach\ChoosesLoaiSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,5 @@
+﻿@model Models.Framework.LOAIDOCGIA
+
+
+    @Html.DropDownListFor(model =>model.MaLoaiDocGia, new SelectList(Model.LoaiDGCollection,
+    "MaLoaiDocGia","TenLoaiDocGia"))

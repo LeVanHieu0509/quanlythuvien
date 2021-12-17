@@ -10,56 +10,38 @@ namespace quanlythuvien.Controllers
     public class DocgiaController : Controller
     {
         // GET: Docgia
+        public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
         public ActionResult Index()
         {
-            return View();
+            return View(db.THEDOCGIAs.ToList());
         }
-        public ActionResult xemdanhsachthedocgia()
+        public ActionResult ChoosesLoaiDG()
         {
-            QuanlythuvienDbContext db = new QuanlythuvienDbContext();
-            //var model = db.Database.SqlQuery<THEDOCGIA>("select * from THEDOCGIA, LOAIDOCGIA").ToList();
-
-            var iplThedocgia = new ThedocgiaModel();
-            var model = iplThedocgia.ListAll();
-            return View(model);
+            LOAIDOCGIA loaiDG = new LOAIDOCGIA();
+            loaiDG.LoaiDGCollection = db.LOAIDOCGIAs.ToList();
+            return PartialView(loaiDG);
         }
 
-
-        [HttpGet]
-        public ActionResult taothedocgia()
+        public ActionResult Create()
         {
             return View();
         }
 
+        // POST: SinhViens/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult taothedocgia(THEDOCGIA collection)
+        public ActionResult Create([Bind(Include = "HotenDocGia, MaLoaiDocGia,NgaySinh,DiaChi,Email,NgayLapThe")] THEDOCGIA docgia)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var model = new ThedocgiaModel();
-                    int res = model.TaoTheDocGia(collection.HoTenDocGia,
-                       collection.DiaChi, collection.Email, collection.MaLoaiDocGia);
-
-                    if (res > 0)
-                    {
-                        return RedirectToAction("xemdanhsachthedocgia");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Them moi ko thanh cong");
-                    }
-                    return RedirectToAction("index");
-                }
-                return View(collection);
-            }
-            catch
-            {
-                return View();
+                db.THEDOCGIAs.Add(docgia);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
+            return View(docgia);
         }
 
     }

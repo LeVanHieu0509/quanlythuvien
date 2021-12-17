@@ -34,7 +34,7 @@ namespace Models.Framework
 
             modelBuilder.Entity<NHAXUATBAN>()
                 .HasMany(e => e.THONGTINSACHes)
-                .WithRequired(e => e.NHAXUATBAN)
+                .WithRequired(e => e.nhaxuatban1)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PHIEUMUONSACH>()
@@ -71,7 +71,7 @@ namespace Models.Framework
 
             modelBuilder.Entity<TACGIA>()
                 .HasMany(e => e.THONGTINSACHes)
-                .WithRequired(e => e.TACGIA1)
+                .WithRequired(e => e.tacgia1)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<THEDOCGIA>()
@@ -101,7 +101,7 @@ namespace Models.Framework
 
             modelBuilder.Entity<THELOAISACH>()
                 .HasMany(e => e.THONGTINSACHes)
-                .WithRequired(e => e.THELOAISACH)
+                .WithRequired(e => e.loaisach1)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<THONGTINSACH>()

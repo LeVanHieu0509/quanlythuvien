@@ -1,0 +1,5 @@
+﻿@model Models.Framework.THELOAISACH
+
+
+@Html.DropDownListFor(model => model.MaTheLoaiSach, new SelectList(Model.LoaiSachCollection,
+"MaTheLoaiSach", "TenTheLoaiSach"))

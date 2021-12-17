@@ -16,7 +16,7 @@ namespace Models.Framework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaTheLoaiSach { get; set; }
 
         [StringLength(30)]
@@ -24,5 +24,6 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINSACH> THONGTINSACHes { get; set; }
+        public List<THELOAISACH> LoaiSachCollection { get; set; }
     }
 }
