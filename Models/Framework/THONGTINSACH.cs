@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -34,10 +34,12 @@ namespace Models.Framework
 
         public int MaNXB { get; set; }
 
+        [Display(Name = "TheLoai")]
         public int MaTheLoaiSach { get; set; }
 
         public int MaTacGia { get; set; }
 
+        [Display(Name = "SoLuong")]
         public int? SoLuongTonKho { get; set; }
 
         [StringLength(10)]

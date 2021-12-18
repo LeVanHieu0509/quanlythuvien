@@ -129,6 +129,7 @@
     <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="Controllers\TraCuuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1901,6 +1902,10 @@
     <Content Include="Views\Docgia\Details.cshtml" />
     <Content Include="Views\Docgia\Delete.cshtml" />
     <Content Include="Views\Docgia\Edit.cshtml" />
+    <Content Include="Views\Sach\Details.cshtml" />
+    <Content Include="Views\Sach\Delete.cshtml" />
+    <Content Include="Views\Sach\Edit.cshtml" />
+    <Content Include="Views\TraCuu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

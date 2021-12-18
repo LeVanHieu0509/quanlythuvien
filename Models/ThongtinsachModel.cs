@@ -10,6 +10,7 @@ namespace Models
     public class ThongtinsachModel
     {
         private QuanlythuvienDbContext context = null;
+        public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
         public ThongtinsachModel()
         {
             context = new QuanlythuvienDbContext();
@@ -19,6 +20,17 @@ namespace Models
             //var list = context.Database.SqlQuery<THONGTINSACH>("Sp_thongtinsach_ListThongtinsach").ToList();
             var list = context.Database.SqlQuery<THONGTINSACH>("select * from THONGTINSACH, NHAXUATBAN where THONGTINSACH.MaNXB = NHAXUATBAN.MaNXB").ToList();
             return list;
+        }
+
+        public IEnumerable<THONGTINSACH> SearchSach(string searchString)
+        {
+            IQueryable<THONGTINSACH> model = context.THONGTINSACHes;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.TenSach.Contains(searchString) || x.tacgia1.TenTacGia.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.MaSach);
         }
     }
 }

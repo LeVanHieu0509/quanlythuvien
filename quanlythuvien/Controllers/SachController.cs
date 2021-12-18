@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Models.Framework;
 using System.Data.Entity;
+using System.Net;
 
 namespace quanlythuvien.Controllers
 {
@@ -21,8 +22,7 @@ namespace quanlythuvien.Controllers
         public ActionResult Create()
         {
             ViewBag.LoaiSach = new SelectList(db.THELOAISACHes, "MaTheLoaiSach", "TenTheLoaiSach");
-            ViewBag.NXB = new SelectList(db.NHAXUATBANs, "MaNXB", "TenNXB");
-          
+            ViewBag.NXB = new SelectList(db.NHAXUATBANs, "MaNXB", "TenNXB");   
             ViewBag.TacGia = new SelectList(db.TACGIAs, "MaTacGia", "TenTacGia");
           
             return View();
@@ -33,7 +33,7 @@ namespace quanlythuvien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia, MaNXB, NgayNhap, TriGia")] THONGTINSACH sach)
+        public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia,NamXuatBan, MaNXB, NgayNhap, TriGia, SoLuongTonKho")] THONGTINSACH sach)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +67,93 @@ namespace quanlythuvien.Controllers
             NHAXUATBAN NXB = new NHAXUATBAN();
             NXB.NXBCollection = db.NHAXUATBANs.ToList();
             return PartialView(NXB);
+        }
+
+
+        // GET: Saches/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THONGTINSACH sach = db.THONGTINSACHes.Find(id);
+            if (sach == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.LoaiSach = new SelectList(db.THELOAISACHes, "MaTheLoaiSach", "TenTheLoaiSach");
+            ViewBag.NXB = new SelectList(db.NHAXUATBANs, "MaNXB", "TenNXB");
+            ViewBag.TacGia = new SelectList(db.TACGIAs, "MaTacGia", "TenTacGia");
+            return View(sach);
+        }
+
+        // POST: Saches
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaSach, TenSach, MaTheLoaiSach,NamXuatBan,NgayNhap,TriGia,MaNXB,MaTacGia, SoLuongTonKho")] THONGTINSACH sach)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sach).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.LoaiSach = new SelectList(db.THELOAISACHes, "MaTheLoaiSach", "TenTheLoaiSach");
+            ViewBag.NXB = new SelectList(db.NHAXUATBANs, "MaNXB", "TenNXB");
+            ViewBag.TacGia = new SelectList(db.TACGIAs, "MaTacGia", "TenTacGia");
+            return View(sach);
+        }
+
+        // GET: 
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THONGTINSACH sach = db.THONGTINSACHes.Find(id);
+            if (sach == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sach);
+        }
+
+        // POST: 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            THONGTINSACH sach = db.THONGTINSACHes.Find(id);
+            db.THONGTINSACHes.Remove(sach);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        // GET
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THONGTINSACH sach = db.THONGTINSACHes.Find(id);
+            if (sach == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sach);
         }
     }
 }

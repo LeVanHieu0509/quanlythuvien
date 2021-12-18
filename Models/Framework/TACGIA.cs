@@ -20,6 +20,7 @@ namespace Models.Framework
         public int MaTacGia { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "TacGia")]
         public string TenTacGia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

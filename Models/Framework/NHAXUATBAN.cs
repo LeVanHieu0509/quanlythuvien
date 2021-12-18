@@ -20,7 +20,9 @@ namespace Models.Framework
         public int MaNXB { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "NXB")]
         public string TenNXB { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINSACH> THONGTINSACHes { get; set; }

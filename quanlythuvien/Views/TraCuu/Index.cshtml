@@ -1,14 +1,24 @@
-﻿
-@model IEnumerable<Models.Framework.THONGTINSACH>
+﻿@model IEnumerable<Models.Framework.THONGTINSACH>
 
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Index</h2>
+<h2>Tra Cứu Sách</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("Index", "TraCuu", FormMethod.Get))
+{
+    <b>Search by: </b> @Html.RadioButton("searchBy", "TenSach", true) <text>Ten sach</text>
+    @Html.RadioButton("searchBy", "TenTacGia") <text>Ten Tac Gia</text>
+    @Html.RadioButton("searchBy", "TenNhaXuatBan") <text>TenNhaXuatBan</text>
+    @Html.RadioButton("searchBy", "none") <text>None</text>
+   
+
+    <br />
+    @Html.TextBox("Search")
+    <input type="submit" value="search" />
+
+}
+
 <table class="table">
     <tr>
         <th>
@@ -21,18 +31,9 @@
             @Html.DisplayNameFor(model => model.tacgia1.TenTacGia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NamXuatBan)
+            @Html.DisplayNameFor(model => model.TinhTrang)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nhaxuatban1.TenNXB)
-        </th>
-        <th>
-
-            @Html.DisplayNameFor(model => model.SoLuongTonKho)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TriGia)
-        </th>
+        
         <th>
             Chuc Nang
         </th>
@@ -51,17 +52,9 @@
                 @Html.DisplayFor(modelItem => item.tacgia1.TenTacGia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NamXuatBan)
+                @Html.DisplayFor(modelItem => item.TinhTrang)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nhaxuatban1.TenNXB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuongTonKho)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TriGia)
-            </td>
+                    
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.MaSach }) |
                 @Html.ActionLink("Details", "Details", new { id = item.MaSach }) |
@@ -71,5 +64,8 @@
     }
 
 </table>
+
+
+
 
 

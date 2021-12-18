@@ -13,9 +13,16 @@ namespace quanlythuvien.Controllers
     {
         // GET: Docgia
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
-        public ActionResult Index()
+        public ActionResult Index(string searchBy, string search)
         {
-            return View(db.THEDOCGIAs.ToList());
+            var docgia = db.THEDOCGIAs.Include(s => s.LOAIDOCGIA);
+            if (searchBy == "HoTenDocGia")
+                return View(db.THEDOCGIAs.Include(s => s.LOAIDOCGIA).Where(s => s.HoTenDocGia.StartsWith(search)).ToList());
+            else if (searchBy == "TenLoaiDocGia")
+                return View(db.THEDOCGIAs.Include(s => s.LOAIDOCGIA).Where(s => s.LOAIDOCGIA.TenLoaiDocGia.StartsWith(search)).ToList());
+ 
+            else
+                return View(docgia.ToList());         
         }
         public ActionResult ChoosesLoaiDG()
         {
