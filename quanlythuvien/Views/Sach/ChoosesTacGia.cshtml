@@ -1,0 +1,6 @@
+﻿@model Models.Framework.TACGIA
+
+
+@Html.DropDownListFor(model => model.MaTacGia, new SelectList(Model.TacGiaCollection,
+"MaTacGia", "TenTacGia"))
+

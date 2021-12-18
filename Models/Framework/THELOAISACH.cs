@@ -24,6 +24,8 @@ namespace Models.Framework
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<THONGTINSACH> THONGTINSACHes { get; set; }
+
+        [NotMapped]
         public List<THELOAISACH> LoaiSachCollection { get; set; }
     }
 }

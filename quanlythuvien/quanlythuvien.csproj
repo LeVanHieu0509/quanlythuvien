@@ -1896,6 +1896,8 @@
     <Content Include="Views\Sach\Index.cshtml" />
     <Content Include="Views\Sach\Create.cshtml" />
     <Content Include="Views\Sach\ChoosesLoaiSach.cshtml" />
+    <Content Include="Views\Sach\ChoosesTacGia.cshtml" />
+    <Content Include="Views\Sach\ChoosesNXB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

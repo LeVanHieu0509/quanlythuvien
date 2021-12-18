@@ -1,0 +1,6 @@
+﻿
+@model Models.Framework.NHAXUATBAN
+
+
+@Html.DropDownListFor(model => model.MaNXB, new SelectList(Model.NXBCollection,
+"MaNXB", "TenNXB"))
