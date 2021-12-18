@@ -29,7 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NgayLapThe)
         </th>
-        <th></th>
+        <th>Chon Chuc Nang</th>
     </tr>
 
     @foreach (var item in Model)
@@ -54,9 +54,9 @@
         @Html.DisplayFor(model => item.NgayLapThe)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiDocGia }) |
-        @Html.ActionLink("Details", "Details", new { id = item.MaLoaiDocGia }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.MaLoaiDocGia })
+        @Html.ActionLink("Edit", "Edit", new { id = item.MaTheDocGia }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MaTheDocGia }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MaTheDocGia })
     </td>
 </tr>}
 

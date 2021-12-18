@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using System.Dynamic;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Data.Entity;
 
 namespace quanlythuvien.Controllers
 {
@@ -41,6 +43,78 @@ namespace quanlythuvien.Controllers
                 return RedirectToAction("Index");
             }
 
+            return View(docgia);
+        }
+
+        //xoa
+       
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
+            if (docgia == null)
+            {
+                return HttpNotFound();
+            }
+            return View(docgia);
+        }
+
+        // POST
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
+            db.THEDOCGIAs.Remove(docgia);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //edit
+        // GET
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
+            if (docgia == null)
+            {
+                return HttpNotFound();
+            }
+            return View(docgia);
+        }
+
+        // POST:
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaTheDocGia,HoTenDocGia,MaLoaiDocGia,NgaySinh,DiaChi,Email,NgayLapThe")] THEDOCGIA docgia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(docgia).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(docgia);
+        }
+
+        //Detail
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
+            if (docgia == null)
+            {
+                return HttpNotFound();
+            }
             return View(docgia);
         }
 

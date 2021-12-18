@@ -20,6 +20,7 @@ namespace Models.Framework
         public int MaLoaiDocGia { get; set; }
 
         [StringLength(30)]
+
         public string TenLoaiDocGia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1898,6 +1898,9 @@
     <Content Include="Views\Sach\ChoosesLoaiSach.cshtml" />
     <Content Include="Views\Sach\ChoosesTacGia.cshtml" />
     <Content Include="Views\Sach\ChoosesNXB.cshtml" />
+    <Content Include="Views\Docgia\Details.cshtml" />
+    <Content Include="Views\Docgia\Delete.cshtml" />
+    <Content Include="Views\Docgia\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
