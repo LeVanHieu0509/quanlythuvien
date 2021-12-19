@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Models.Framework.CT_PHIEUMUONTRA>
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaPhieuTra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoNgayMuon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TienPhat)
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+   
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

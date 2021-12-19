@@ -128,6 +128,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhieuMuonController.cs" />
+    <Compile Include="Controllers\PhieuTraController.cs" />
     <Compile Include="Controllers\SachController.cs" />
     <Compile Include="Controllers\TraCuuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1906,6 +1908,17 @@
     <Content Include="Views\Sach\Delete.cshtml" />
     <Content Include="Views\Sach\Edit.cshtml" />
     <Content Include="Views\TraCuu\Index.cshtml" />
+    <Content Include="Views\PhieuMuon\Index.cshtml" />
+    <Content Include="Views\PhieuMuon\ChoosesDocGia.cshtml" />
+    <Content Include="Views\PhieuMuon\Create.cshtml" />
+    <Content Include="Views\PhieuMuon\CreateDetail.cshtml" />
+    <Content Include="Views\PhieuMuon\ChoosesPhieuMuon.cshtml" />
+    <Content Include="Views\PhieuMuon\ChoosesSach.cshtml" />
+    <Content Include="Views\PhieuTra\Index.cshtml" />
+    <Content Include="Views\PhieuTra\Create.cshtml" />
+    <Content Include="Views\PhieuTra\ChoosesPhieuTra.cshtml" />
+    <Content Include="Views\PhieuTra\Delete.cshtml" />
+    <Content Include="Views\PhieuTra\ChiTietMuonTra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

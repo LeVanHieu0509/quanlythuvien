@@ -16,7 +16,7 @@ namespace Models.Framework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaPhieuMuon { get; set; }
 
         public int MaTheDocGia { get; set; }
@@ -30,5 +30,7 @@ namespace Models.Framework
         public virtual ICollection<CT_PHIEUMUONTRA> CT_PHIEUMUONTRA { get; set; }
 
         public virtual THEDOCGIA THEDOCGIA { get; set; }
+        [NotMapped]
+        public List<PHIEUMUONSACH> PhieuMuonCollection { get; set; }
     }
 }

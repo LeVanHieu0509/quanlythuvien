@@ -56,5 +56,8 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PHIEUNHAPSACH> CT_PHIEUNHAPSACH { get; set; }
+
+        [NotMapped]
+        public List<THONGTINSACH> SachCollection { get; set; }
     }
 }

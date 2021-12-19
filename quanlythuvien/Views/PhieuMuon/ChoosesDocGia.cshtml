@@ -1,0 +1,6 @@
+﻿@model Models.Framework.THEDOCGIA
+
+
+@Html.DropDownListFor(model => model.MaTheDocGia, new SelectList(Model.DocGiaCollection,
+"MaTheDocGia", "HoTenDocGia"))
+

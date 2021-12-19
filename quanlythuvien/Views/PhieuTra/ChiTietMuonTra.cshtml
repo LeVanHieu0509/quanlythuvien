@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Models.Framework.CT_PHIEUMUONTRA>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>@Html.ActionLink("Tra Sach", "RemovePhieuMuon")</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhieuMuon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhieuTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSach)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaPhieuMuon)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.MaPhieuTra)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaSach)
+    </td>
+   
+
+    
+</tr>}
+
+</table>
+
+

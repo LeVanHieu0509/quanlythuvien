@@ -1,0 +1,7 @@
+﻿@model Models.Framework.THONGTINSACH
+
+
+@Html.DropDownListFor(model => model.MaSach, new SelectList(Model.SachCollection,
+"MaSach", "TenSach"))
+
+

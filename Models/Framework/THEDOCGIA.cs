@@ -53,5 +53,7 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUTRASACH> PHIEUTRASACHes { get; set; }
+        [NotMapped]
+        public List<THEDOCGIA> DocGiaCollection { get; set; }
     }
 }

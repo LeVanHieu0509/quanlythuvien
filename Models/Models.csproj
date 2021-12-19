@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtPhieuMuonTraModel.cs" />
     <Compile Include="Framework\CT_PHIEUMUONTRA.cs" />
     <Compile Include="Framework\CT_PHIEUNHAPSACH.cs" />
     <Compile Include="Framework\LOAIDOCGIA.cs" />
