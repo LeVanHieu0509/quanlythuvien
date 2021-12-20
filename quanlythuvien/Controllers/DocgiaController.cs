@@ -128,7 +128,6 @@ namespace quanlythuvien.Controllers
            
             var iplPhieuMuon = new PhieuMuonModel();
             var result = iplPhieuMuon.FindMaPhieuMuon(id); //MaPhieuMuon:12, id: 31
-            setAlert(result.ToString()+ id.ToString(),"success");
             var count = GetCountChitietMuonsach(result);
             UpdateSoLuongMuonSach(id, count);
             THEDOCGIA docgia = db.THEDOCGIAs.Find(id);

@@ -40,7 +40,7 @@
         public int MaTacGia { get; set; }
 
         [Display(Name = "SoLuong")]
-        public int? SoLuongTonKho { get; set; }
+        public int SoLuongTonKho { get; set; }
 
         [StringLength(10)]
         public string TinhTrang { get; set; }

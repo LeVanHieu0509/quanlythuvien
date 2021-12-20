@@ -86,10 +86,24 @@ namespace quanlythuvien.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CT_PHIEUMUONTRA.Add(ct_phieumuon);
-                db.SaveChanges();
-                setAlert("Bạn đã tạo chi tiết phiếu mượn sách thành công", "success");
-                return RedirectToAction("ChiTietMuonTra","PhieuTra");
+                var masach = ct_phieumuon.MaSach;
+                var ilpPhieuMuon = new PhieuMuonModel();
+                string  ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
+                //setAlert(ischeckTinhTrang, "success");
+                if (ischeckTinhTrang.Trim() == "Con")
+                {
+                    db.CT_PHIEUMUONTRA.Add(ct_phieumuon);
+                    db.SaveChanges();
+                    setAlert("Bạn đã tạo chi tiết phiếu mượn sách thành công", "success");
+                    return RedirectToAction("ChiTietMuonTra", "PhieuTra");
+                }
+                else
+                {
+                    setAlert("Bạn Tạo chi tiết phiếu mượn sách thất bại vì sách bạn mượn đã hết", "error");
+                    return RedirectToAction("ChiTietMuonTra", "PhieuTra");
+                   // return RedirectToAction("Index");
+                }
+                
             }
             return View(ct_phieumuon);
         }

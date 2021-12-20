@@ -5,9 +5,12 @@
 
 <h2>Danh Sách Phiếu Trả</h2>
 
-<p>
-    @Html.ActionLink("Tạo phiếu trả sách", "Create")
-</p>
+<div class="d-flex justify-content-between">
+    <p>
+        @Html.ActionLink("Tạo phiếu trả sách", "Create")
+    </p>
+    <p>@Html.ActionLink("Tạo chi tiết phiếu Mượn sách", "CreateDetail","PhieuMuon")</p>
+</div>
 
 <table class="table">
     <tr>

@@ -45,19 +45,24 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia,NamXuatBan, MaNXB, NgayNhap, TriGia, SoLuongTonKho")] THONGTINSACH sach)
         {
+            var iplSach = new ThongtinsachModel();
             if (ModelState.IsValid)
             {
+                var soluongsachton = sach.SoLuongTonKho;
                 db.THONGTINSACHes.Add(sach);
                 db.SaveChanges();
+                //var soluongsachton = iplSach.SoLuongSachTonKho();
+                if (soluongsachton > 0)
+                {
+                    iplSach.updateTinhTrangCon();
+                }
+                else
+                {
+                    iplSach.updateTinhTrangHet();
+                }
                 setAlert("Bạn đã thêm sách thành công", "success");
                 return RedirectToAction("Index");
             }
-
-            //ViewBag.LoaiSach = new SelectList(db.LoaiSaches, "ID", "MaLoaiSach", sach.LoaiSach);
-            //ViewBag.NXB = new SelectList(db.NXBs, "ID", "MaNXB", sach.NXB);
-            //ViewBag.Muon = new SelectList(db.PhieuMuons, "ID", "MaMuon", sach.Muon);
-            //ViewBag.TacGia = new SelectList(db.TacGias, "ID", "MaTacGia", sach.TacGia);
-            //ViewBag.ViTri = new SelectList(db.ViTris, "ID", "MaViTri", sach.ViTri);
             return View(sach);
         }
 

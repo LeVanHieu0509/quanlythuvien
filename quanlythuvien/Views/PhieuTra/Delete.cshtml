@@ -4,51 +4,64 @@
     ViewBag.Title = "Delete";
 }
 
-<h3>Bạn có chắc chắn là muốn trả sách không?</h3>
-<br /> <br />
-<h4 class="text-center ">Danh sách độc giả đang mượn</h4>
 
-<table class="table">
-    <tr>
-        <th>
-            Ma Phieu Tra
-        </th>
-        <th>
-            Mã Phiếu Mượn
-        </th>
-        <th>
-            Mã Sách
-        </th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+@if (Model.Count() > 0)
+{
+    <h3>Bạn có chắc chắn là muốn trả sách không?</h3>
+    <br />
+    <br />
+    <h4 class="text-center ">Danh sách sách độc giả đang mượn</h4>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaPhieuTra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaPhieuMuon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaSach)
-            </td>
-
-
+            <th>
+                Ma Phieu Tra
+            </th>
+            <th>
+                Mã Phiếu Mượn
+            </th>
+            <th>
+                Mã Sách
+            </th>
         </tr>
-    }
-</table>
-<br />
-<div>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhieuTra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhieuMuon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSach)
+                </td>
 
 
-    @using (Html.BeginForm())
+            </tr>
+        }
+    </table>
+
+    using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color text-center">
             <input type="submit" value="Trả Sách" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Quay về", "Index")
         </div>
     }
+}
+else
+{
+
+    <h3 class="p-4">Độc giả đã trả sách</h3>
+    @Html.ActionLink("Quay về", "Index")
+}
+
+<br />
+<div>
+
+
 </div>
