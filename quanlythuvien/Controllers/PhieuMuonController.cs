@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Net;
+using Models;
 
 namespace quanlythuvien.Controllers
 {
@@ -127,6 +128,8 @@ namespace quanlythuvien.Controllers
             }
            
         }
+
+        
 
     }
 }

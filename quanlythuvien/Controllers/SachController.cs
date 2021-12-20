@@ -6,17 +6,27 @@ using System.Web.Mvc;
 using Models.Framework;
 using System.Data.Entity;
 using System.Net;
+using Models;
 
 namespace quanlythuvien.Controllers
 {
-    public class SachController : Controller
+    public class SachController : BaseController
     {
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
         // GET: Sach
         public ActionResult Index()
         {
+            
             var saches = db.THONGTINSACHes.Include(s => s.loaisach1).Include(s => s.tacgia1).Include(s => s.nhaxuatban1);
             return View(saches.ToList());
+        }
+
+        public ActionResult CountTotalSach()
+        {
+            var countTotalSach = new ThongtinsachModel();
+            var totalSach = countTotalSach.CountTotalSach();
+            ViewBag.infoSach = totalSach;
+            return PartialView("CountTotalSach");
         }
 
         public ActionResult Create()

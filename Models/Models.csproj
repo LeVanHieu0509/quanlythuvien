@@ -68,6 +68,7 @@
     <Compile Include="Framework\THELOAISACH.cs" />
     <Compile Include="Framework\THONGTINSACH.cs" />
     <Compile Include="NhaxuatbanModel.cs" />
+    <Compile Include="PhieuMuonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TacgiaModel.cs" />
     <Compile Include="ThedocgiaModel.cs" />

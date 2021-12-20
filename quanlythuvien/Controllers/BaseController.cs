@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,19 @@ namespace quanlythuvien.Controllers
             {
                 TempData["AlertType"] = "alert-danger";
             }
+        }
+
+        public void UpdateSoLuongMuonSach(int? mathedocgia, int soluongsachdangmuon)
+        {
+            var iplThedocgia = new ThedocgiaModel();
+            iplThedocgia.UpdateSoLuongSachDangMuon(mathedocgia, soluongsachdangmuon);
+        }
+
+        public int GetCountChitietMuonsach(int? id)
+        {
+            var iplThedocgia = new CtPhieuMuonTraModel();
+            var result = iplThedocgia.CountTotalDangMuon(id);
+            return result;
         }
     }
 }

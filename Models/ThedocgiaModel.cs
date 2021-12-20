@@ -30,5 +30,13 @@ namespace Models
             int res = context.Database.ExecuteSqlCommand("Sp_TheDocGia_Insert @HoTenDocGia1, @Diachi1, @Email1, @MaLoaiDocGia1", parameters);
             return res;
         }
+
+
+        public void UpdateSoLuongSachDangMuon(int? mathedocgia,int soluong)
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.ExecuteSqlCommand("UPDATE THEDOCGIA SET SLSachDangMuon_=" + soluong + "Where MaTheDocGia =" + mathedocgia);
+            
+        }
     }
 }

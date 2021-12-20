@@ -124,6 +124,13 @@ namespace quanlythuvien.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
+           
+            var iplPhieuMuon = new PhieuMuonModel();
+            var result = iplPhieuMuon.FindMaPhieuMuon(id); //MaPhieuMuon:12, id: 31
+            setAlert(result.ToString()+ id.ToString(),"success");
+            var count = GetCountChitietMuonsach(result);
+            UpdateSoLuongMuonSach(id, count);
             THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
             if (docgia == null)
             {
@@ -131,6 +138,9 @@ namespace quanlythuvien.Controllers
             }
             return View(docgia);
         }
+
+
+        
 
     }
 }

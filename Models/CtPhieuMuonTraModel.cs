@@ -31,5 +31,14 @@ namespace Models
             
             context.Database.ExecuteSqlCommand("Delete from PHIEUMUONSACH where MaPhieuMuon =" + id);
         }
+
+
+        public int CountTotalDangMuon(int? id)
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<CT_PHIEUMUONTRA>("SELECT * FROM CT_PHIEUMUONTRA WHERE MaPhieuMuon =" + id).Count();
+            return countTotal;
+
+        }
     }
 }

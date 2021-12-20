@@ -35,12 +35,11 @@ namespace Models
 
         public int CountTotalSach()
         {
-            //var list = context.Database.SqlQuery<THONGTINSACH>("Sp_thongtinsach_ListThongtinsach").ToList();
-            //var list = context.Database.SqlQuery<THONGTINSACH>("select * from THONGTINSACH, NHAXUATBAN where THONGTINSACH.MaNXB = NHAXUATBAN.MaNXB").ToList();
-            //return list;
-            
-            var countTotal = context.Database.ExecuteSqlCommand("SELECT count(*)  FROM THONGTINSACH");
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<THONGTINSACH>("SELECT * FROM THONGTINSACH").Count();
             return countTotal;
+
         }
     }
 }
+
