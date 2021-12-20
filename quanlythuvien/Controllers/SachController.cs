@@ -39,6 +39,7 @@ namespace quanlythuvien.Controllers
             {
                 db.THONGTINSACHes.Add(sach);
                 db.SaveChanges();
+                setAlert("Bạn đã thêm sách thành công", "success");
                 return RedirectToAction("Index");
             }
 
@@ -98,6 +99,7 @@ namespace quanlythuvien.Controllers
             {
                 db.Entry(sach).State = EntityState.Modified;
                 db.SaveChanges();
+                setAlert("Bạn đã sửa thông tin sách thành công", "success");
                 return RedirectToAction("Index");
             }
             ViewBag.LoaiSach = new SelectList(db.THELOAISACHes, "MaTheLoaiSach", "TenTheLoaiSach");
@@ -128,6 +130,7 @@ namespace quanlythuvien.Controllers
         {
             THONGTINSACH sach = db.THONGTINSACHes.Find(id);
             db.THONGTINSACHes.Remove(sach);
+            setAlert("Bạn đã xóa sách thành công", "success");
             db.SaveChanges();
             return RedirectToAction("Index");
         }

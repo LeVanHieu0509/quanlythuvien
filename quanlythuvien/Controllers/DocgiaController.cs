@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace quanlythuvien.Controllers
 {
-    public class DocgiaController : Controller
+    public class DocgiaController : BaseController
     {
         // GET: Docgia
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
@@ -47,7 +47,12 @@ namespace quanlythuvien.Controllers
             {
                 db.THEDOCGIAs.Add(docgia);
                 db.SaveChanges();
+                setAlert("Thêm thẻ độc giả thành công","success");
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Them the doc gia khong thanh cong");
             }
 
             return View(docgia);
@@ -77,6 +82,7 @@ namespace quanlythuvien.Controllers
             THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
             db.THEDOCGIAs.Remove(docgia);
             db.SaveChanges();
+            setAlert("Thẻ độc giả đã được xóa", "success");
             return RedirectToAction("Index");
         }
 
@@ -105,6 +111,7 @@ namespace quanlythuvien.Controllers
             {
                 db.Entry(docgia).State = EntityState.Modified;
                 db.SaveChanges();
+                setAlert("Thẻ độc giả đã được sửa thành công", "success");
                 return RedirectToAction("Index");
             }
             return View(docgia);

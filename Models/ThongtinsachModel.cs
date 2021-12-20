@@ -32,5 +32,15 @@ namespace Models
             }
             return model.OrderByDescending(x => x.MaSach);
         }
+
+        public int CountTotalSach()
+        {
+            //var list = context.Database.SqlQuery<THONGTINSACH>("Sp_thongtinsach_ListThongtinsach").ToList();
+            //var list = context.Database.SqlQuery<THONGTINSACH>("select * from THONGTINSACH, NHAXUATBAN where THONGTINSACH.MaNXB = NHAXUATBAN.MaNXB").ToList();
+            //return list;
+            
+            var countTotal = context.Database.ExecuteSqlCommand("SELECT count(*)  FROM THONGTINSACH");
+            return countTotal;
+        }
     }
 }

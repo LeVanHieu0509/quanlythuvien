@@ -23,10 +23,13 @@ namespace Models
 
         public void RemoveMaPhieuTra(int? id)
         {
-            SqlCommand cmd = new SqlCommand("Delete from CT_PHIEUMUONTRA where MaPhieuTra =" + id);
-            cmd.ExecuteNonQuery();
-            //var list = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Delete from CT_PHIEUMUONTRA where MaPhieuTra =" + id).ToList();
-            //return list;
+            context.Database.ExecuteSqlCommand("Delete from CT_PHIEUMUONTRA where MaPhieuTra =" + id);   
+        }
+        public void RemoveMaPhieuMuon(int? id)
+        {
+            var list = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from PHIEUMUONTRA where MaPhieuTra =" + id).ToList();
+            
+            context.Database.ExecuteSqlCommand("Delete from PHIEUMUONSACH where MaPhieuMuon =" + id);
         }
     }
 }

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net;
 
 namespace quanlythuvien.Controllers
 {
-    public class PhieuMuonController : Controller
+    public class PhieuMuonController : BaseController
     {
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
         // GET: PhieuMuon
@@ -50,9 +51,19 @@ namespace quanlythuvien.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PHIEUMUONSACHes.Add(phieumuon);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.PHIEUMUONSACHes.Add(phieumuon);
+                    db.SaveChanges();
+                    setAlert("Bạn đã tạo phiếu mượn sách thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    setAlert("Tạo phiếu mượn thất bại", "error");
+                    return RedirectToAction("Index");
+                }
+                
             }
             return View(phieumuon);
         }
@@ -76,9 +87,45 @@ namespace quanlythuvien.Controllers
             {
                 db.CT_PHIEUMUONTRA.Add(ct_phieumuon);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                setAlert("Bạn đã tạo chi tiết phiếu mượn sách thành công", "success");
+                return RedirectToAction("ChiTietMuonTra","PhieuTra");
             }
             return View(ct_phieumuon);
+        }
+
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUMUONSACH phieumuon = db.PHIEUMUONSACHes.Find(id);
+            if (phieumuon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phieumuon);
+        }
+
+        // POST
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try {
+                PHIEUMUONSACH phieumuon = db.PHIEUMUONSACHes.Find(id);
+                db.PHIEUMUONSACHes.Remove(phieumuon);
+                db.SaveChanges();
+                setAlert("Bạn xóa phiếu mượn sách thành công", "success");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                setAlert("Bạn xóa phiếu mượn sách thất bại", "error");
+                return RedirectToAction("Index");
+            }
+           
         }
 
     }

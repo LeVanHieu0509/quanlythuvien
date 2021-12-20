@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhieuMuonController.cs" />
@@ -1919,10 +1920,13 @@
     <Content Include="Views\PhieuTra\ChoosesPhieuTra.cshtml" />
     <Content Include="Views\PhieuTra\Delete.cshtml" />
     <Content Include="Views\PhieuTra\ChiTietMuonTra.cshtml" />
+    <Content Include="Views\PhieuTra\Remove.cshtml" />
+    <Content Include="Views\PhieuMuon\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

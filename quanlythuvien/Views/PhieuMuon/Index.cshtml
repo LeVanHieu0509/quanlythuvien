@@ -3,19 +3,21 @@
 @{ ViewBag.Title = "Index";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Index</h2>
+<h2>Danh Sách Phiếu Mượn</h2>
+<div class="d-flex justify-content-between">
+    <p>
+        @Html.ActionLink("Tạo phiếu mượn sách", "Create")
+    </p>
+    <p>@Html.ActionLink("Tạo chi tiết phiếu mượn sách", "CreateDetail")</p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>@Html.ActionLink("Create DeTail Phieu Muon", "CreateDetail")</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MaPhieuMuon)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.THEDOCGIA.MaTheDocGia)
+            @Html.DisplayNameFor(model => model.THEDOCGIA.HoTenDocGia)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NgayMuon)

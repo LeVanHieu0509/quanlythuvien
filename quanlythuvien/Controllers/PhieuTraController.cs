@@ -10,7 +10,7 @@ using Models;
 
 namespace quanlythuvien.Controllers
 {
-    public class PhieuTraController : Controller
+    public class PhieuTraController : BaseController
     {
         // GET: PhieuTra
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
@@ -41,6 +41,7 @@ namespace quanlythuvien.Controllers
             {
                 db.PHIEUTRASACHes.Add(phieutra);
                 db.SaveChanges();
+                setAlert("Tạo phiếu trả sách thành công", "success");
                 return RedirectToAction("Index");
             }
             return View(phieutra);
@@ -61,14 +62,6 @@ namespace quanlythuvien.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //getIdPhieuMuonTra(id);
-            //CT_PHIEUMUONTRA ctMuonTra = db.CT_PHIEUMUONTRA.Find(id);
-            //PHIEUMUONSACH phieuMuon = db.PHIEUMUONSACHes.Find(id);
-            //PHIEUTRASACH phieuTra = db.PHIEUTRASACHes.Find(id);
-            //if (phieuTra == null)
-            //{
-            //    return HttpNotFound();
-            //}
             return View(getIdPhieuMuonTra(id));
         }
 
@@ -82,22 +75,62 @@ namespace quanlythuvien.Controllers
         public void RemoveIdPhieuMuonTra(int? id)
         {
             var iplPhieuMuonTra = new CtPhieuMuonTraModel();
-            var LPhieuMuonTra = iplPhieuMuonTra.FindMaPhieuTra(id);
+            iplPhieuMuonTra.RemoveMaPhieuTra(id);
            
+        }
+        public void RemoveIdPhieuMuon(int? id)
+        {
+            var iplPhieuMuonTra = new CtPhieuMuonTraModel();
+            iplPhieuMuonTra.RemoveMaPhieuMuon(id);
+
         }
         // POST: 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            RemoveIdPhieuMuonTra(id);
 
-            //PHIEUMUONSACH phieuMuon = db.PHIEUMUONSACHes.Find(id);
-            //PHIEUTRASACH phieuTra = db.PHIEUTRASACHes.Find(id);
-            //db.CT_PHIEUMUONTRA.Remove(ctMuonTra);
-            //db.PHIEUMUONSACHes.Remove(phieuMuon);
-            RemoveIdPhieuMuonTra(id);     
-            ViewBag.Message = string.Format("Ban Da Tra Sach Thanh Cong");
+            setAlert("Độc giả trả sách thành công", "success");
             return RedirectToAction("ChiTietMuonTra");
+        }
+
+
+
+
+        public ActionResult Remove(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+            if (phieutra == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phieutra);
+        }
+
+        // POST
+        [HttpPost, ActionName("Remove")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveConfirmed(int id)
+        {
+            try
+            {
+                PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+                db.PHIEUTRASACHes.Remove(phieutra);
+                db.SaveChanges();
+                setAlert("Xóa phiếu trả sách thành công", "success");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                setAlert("Độc giả chưa trả sách", "error");
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

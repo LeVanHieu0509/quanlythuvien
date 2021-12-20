@@ -24,6 +24,7 @@ namespace Models.Framework
         public DateTime? NgayMuon { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "TinhTrangSach")]
         public string TinhTrangMuon { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

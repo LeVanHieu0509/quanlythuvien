@@ -3,19 +3,19 @@
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Index</h2>
+<h2>Danh Sách Phiếu Trả</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo phiếu trả sách", "Create")
 </p>
-<p>@Html.ActionLink("Tra Sach", "RemovePhieuMuon")</p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.MaPhieuTra)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.THEDOCGIA.MaTheDocGia)
+            @Html.DisplayNameFor(model => model.THEDOCGIA.HoTenDocGia)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TongNo)
@@ -26,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NgayTra)
         </th>
-        <th></th>
+        <th>Chức Năng </th>
     </tr>
 
     @foreach (var item in Model)
@@ -49,9 +49,9 @@
     </td>
 
     <td>
-        @Html.ActionLink("Tra Sach", "Delete", new { id = item.MaPhieuTra }) |
-        @Html.ActionLink("Details", "Details", new { id = item.MaPhieuTra }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.MaPhieuTra })
+        @Html.ActionLink("Trả sách", "Delete", new { id = item.MaPhieuTra }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaPhieuTra }) |
+        @Html.ActionLink("Xóa", "Remove", new { id = item.MaPhieuTra })
     </td>
 </tr>
 }
