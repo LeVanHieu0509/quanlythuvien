@@ -16,7 +16,7 @@ namespace Models.Framework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaTacGia { get; set; }
 
         [StringLength(50)]

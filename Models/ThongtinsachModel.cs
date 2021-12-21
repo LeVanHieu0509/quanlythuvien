@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Framework;
+using Models.ViewModel;
 
 namespace Models
 {
@@ -60,6 +61,31 @@ namespace Models
         public void updateTinhTrangHet()
         {
             context.Database.ExecuteSqlCommand("Update THONGTINSACH set TinhTrang = 'Het' where SoLuongTonKho = 0");
+        }
+
+        public List<THONGTINSACH> ListSach()
+        {
+          
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<THONGTINSACH>("SELECT * FROM THONGTINSACH").ToList();
+            
+            return countTotal;
+        }
+
+
+        public List<BaoCaoViewModel> ListBaoCaoTheoTheLoai(int masach, int matheloaisach)
+        {
+            var model = from a in db.THONGTINSACHes
+                        join c in db.THELOAISACHes                                       
+                        on a.MaTheLoaiSach equals c.MaTheLoaiSach
+                        where a.MaTheLoaiSach == matheloaisach
+                        select new BaoCaoViewModel()
+                        {
+                            MaSach = a.MaSach,
+                            MaTheLoaiSach = c.MaTheLoaiSach
+                        };
+
+            return model.ToList();
         }
     }
 }

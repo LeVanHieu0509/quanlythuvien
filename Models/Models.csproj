@@ -74,6 +74,7 @@
     <Compile Include="ThedocgiaModel.cs" />
     <Compile Include="TheloaisachModel.cs" />
     <Compile Include="ThongtinsachModel.cs" />
+    <Compile Include="ViewModel\BaoCaoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig">

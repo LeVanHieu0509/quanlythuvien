@@ -16,7 +16,7 @@ namespace Models.Framework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaLoaiDocGia { get; set; }
 
         [StringLength(30)]

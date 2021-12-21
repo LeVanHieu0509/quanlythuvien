@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Models.Framework.THONGTINSACH>
+@{
+    ViewBag.Title = "BaoCaoTheoTheLoai";
+}
+
+<h2>BaoCaoTheoTheLoai</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSach)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.MaTheLoaiSach)
+        </th>
+        <th>So Luong muon</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTheLoaiSach)
+            </td>
+          
+          
+        </tr>
+    }
+
+</table>

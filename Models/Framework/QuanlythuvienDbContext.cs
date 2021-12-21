@@ -74,6 +74,8 @@ namespace Models.Framework
                 .WithRequired(e => e.tacgia1)
                 .WillCascadeOnDelete(false);
 
+           
+
             modelBuilder.Entity<THEDOCGIA>()
                 .Property(e => e.Email)
                 .IsFixedLength()
@@ -98,6 +100,8 @@ namespace Models.Framework
                 .HasMany(e => e.PHIEUTRASACHes)
                 .WithRequired(e => e.THEDOCGIA)
                 .WillCascadeOnDelete(false);
+
+         
 
             modelBuilder.Entity<THELOAISACH>()
                 .HasMany(e => e.THONGTINSACHes)

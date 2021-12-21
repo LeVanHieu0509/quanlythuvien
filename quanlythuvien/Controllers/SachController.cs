@@ -38,9 +38,7 @@ namespace quanlythuvien.Controllers
             return View();
         }
 
-        // POST: Saches/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //them sach
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia,NamXuatBan, MaNXB, NgayNhap, TriGia, SoLuongTonKho")] THONGTINSACH sach)
@@ -172,6 +170,81 @@ namespace quanlythuvien.Controllers
                 return HttpNotFound();
             }
             return View(sach);
+        }
+
+        public ActionResult CreateTacGia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTacGia([Bind(Include = "TenTacGia")] TACGIA tacgia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.TACGIAs.Add(tacgia);
+                db.SaveChanges();
+                setAlert("Thêm tác giả thành công", "success");
+                return RedirectToAction("CreateTheLoaiSach");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Thêm tác giả thất bại");
+            }
+
+            return View(tacgia);
+        }
+        //add LoaiSach
+
+        public ActionResult CreateTheLoaiSach()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTheLoaiSach([Bind(Include = "TenTheLoaiSach")] THELOAISACH theloaisach)
+        {
+            if (ModelState.IsValid)
+            {
+                db.THELOAISACHes.Add(theloaisach);
+                db.SaveChanges();
+                setAlert("Thêm thể loại sách thành công", "success");
+                return RedirectToAction("CreateNXB");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Thêm thể loại sách thất bại");
+            }
+
+            return View(theloaisach);
+        }
+
+        //them nxb
+
+        public ActionResult CreateNXB()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNXB([Bind(Include = "TenNXB")] NHAXUATBAN nxb)
+        {
+            if (ModelState.IsValid)
+            {
+                db.NHAXUATBANs.Add(nxb);
+                db.SaveChanges();
+                setAlert("Thêm thể loại sách thành công", "success");
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Thêm thể loại sách thất bại");
+            }
+
+            return View(nxb);
         }
     }
 }

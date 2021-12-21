@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DocgiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1924,6 +1925,11 @@
     <Content Include="Views\PhieuTra\Remove.cshtml" />
     <Content Include="Views\PhieuMuon\Delete.cshtml" />
     <Content Include="Views\Sach\CountTotalSach.cshtml" />
+    <Content Include="Views\BaoCao\BaoCaoTheoTheLoai.cshtml" />
+    <Content Include="Views\Docgia\CreateLoaiDocGia.cshtml" />
+    <Content Include="Views\Sach\CreateTacGia.cshtml" />
+    <Content Include="Views\Sach\CreateTheLoaiSach.cshtml" />
+    <Content Include="Views\Sach\CreateNXB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

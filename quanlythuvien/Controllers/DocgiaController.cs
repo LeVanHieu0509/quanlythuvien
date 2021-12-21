@@ -137,9 +137,34 @@ namespace quanlythuvien.Controllers
             }
             return View(docgia);
         }
+        public ActionResult CreateLoaiDocGia()
+        {
+            return View();
+        }
 
+        // POST: SinhViens/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateLoaiDocGia([Bind(Include = "TenLoaiDocGia")] LOAIDOCGIA loaidocgia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.LOAIDOCGIAs.Add(loaidocgia);
+                db.SaveChanges();
+                setAlert("Thêm loại độc giả thành công", "success");
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Them loai doc gia khong thanh cong");
+            }
 
-        
-
+            return View(loaidocgia);
+        }
     }
+
+
+   
 }
