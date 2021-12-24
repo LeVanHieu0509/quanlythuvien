@@ -26,6 +26,22 @@ namespace quanlythuvien.Controllers
                 TempData["AlertType"] = "alert-danger";
             }
         }
+        protected void setAlertLogin(string message, string type)
+        {
+            TempData["AlertMessage"] = message;
+            if (type == "success")
+            {
+                TempData["AlertType"] = "alert-success";
+            }
+            else if (type == "warning")
+            {
+                TempData["AlertType"] = "alert-warning";
+            }
+            else if (type == "error")
+            {
+                TempData["AlertType"] = "alert-danger";
+            }
+        }
 
         public void UpdateSoLuongMuonSach(int? mathedocgia, int soluongsachdangmuon)
         {

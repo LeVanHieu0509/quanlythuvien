@@ -19,7 +19,8 @@ namespace quanlythuvien.Controllers
             var phieuMuons = db.PHIEUMUONSACHes.Include(s => s.THEDOCGIA);
             return View(phieuMuons.ToList());
         }
-
+        
+        //Xuat the docgia
         public ActionResult ChoosesDocGia()
         {
             THEDOCGIA docgia = new THEDOCGIA();

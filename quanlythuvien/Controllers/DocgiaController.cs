@@ -28,7 +28,7 @@ namespace quanlythuvien.Controllers
         {
             LOAIDOCGIA loaiDG = new LOAIDOCGIA();
             loaiDG.LoaiDGCollection = db.LOAIDOCGIAs.ToList();
-            return PartialView(loaiDG);
+            return PartialView(loaiDG);    
         }
 
         public ActionResult Create()

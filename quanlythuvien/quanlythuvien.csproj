@@ -1930,6 +1930,8 @@
     <Content Include="Views\Sach\CreateTacGia.cshtml" />
     <Content Include="Views\Sach\CreateTheLoaiSach.cshtml" />
     <Content Include="Views\Sach\CreateNXB.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,6 +24,8 @@ namespace Models.Framework
         public virtual DbSet<THONGTINSACH> THONGTINSACHes { get; set; }
         public virtual DbSet<CT_PHIEUMUONTRA> CT_PHIEUMUONTRA { get; set; }
         public virtual DbSet<CT_PHIEUNHAPSACH> CT_PHIEUNHAPSACH { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
