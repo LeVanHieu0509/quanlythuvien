@@ -17,8 +17,10 @@ namespace Models.Framework
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int MaPhieuMuon { get; set; }
 
+        [Display(Name = "TenDocGia")]
         public int MaTheDocGia { get; set; }
 
         public DateTime? NgayMuon { get; set; }

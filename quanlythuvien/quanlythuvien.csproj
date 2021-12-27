@@ -134,6 +134,7 @@
     <Compile Include="Controllers\PhieuMuonController.cs" />
     <Compile Include="Controllers\PhieuTraController.cs" />
     <Compile Include="Controllers\SachController.cs" />
+    <Compile Include="Controllers\TienPhatController.cs" />
     <Compile Include="Controllers\TraCuuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1789,6 +1790,7 @@
     <Content Include="assets\font\fontawesome-free-5.15.4-web\webfonts\fa-brands-400.svg" />
     <Content Include="assets\font\fontawesome-free-5.15.4-web\webfonts\fa-regular-400.svg" />
     <Content Include="assets\font\fontawesome-free-5.15.4-web\webfonts\fa-solid-900.svg" />
+    <Content Include="assets\image\backgrounf.jpg" />
     <Content Include="assets\image\img_quydinh1%402x.png" />
     <Content Include="assets\image\img_quydinh1.png" />
     <Content Include="assets\image\nav_logo%402x.png" />
@@ -1932,6 +1934,12 @@
     <Content Include="Views\Sach\CreateNXB.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\PhieuTra\Details.cshtml" />
+    <Content Include="Views\PhieuTra\Edit.cshtml" />
+    <Content Include="Views\TienPhat\Index.cshtml" />
+    <Content Include="Views\TienPhat\Create.cshtml" />
+    <Content Include="Views\TienPhat\ListPhieuThuTien.cshtml" />
+    <Content Include="Views\TienPhat\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

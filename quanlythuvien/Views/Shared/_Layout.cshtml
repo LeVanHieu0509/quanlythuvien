@@ -14,6 +14,16 @@
     
 
 </head>
+<style>
+    a{
+        text-decoration:none;
+        color: black;
+    }
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+</style>
 <body>
     <div id="man_hinh_tao_thedocgia" style="height:1000px">
         <div id="Main" class="main " style="width: 1200px; margin: auto;">
@@ -135,10 +145,10 @@
                             <div id="quan_ly_tien_phat" class="collapse">
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-link  ">
-                                        <a class="list-group-item-link-a" href="#">Tạo phiếu thu tiền</a>
+                                        <a class="list-group-item-link-a" href="#">@Html.ActionLink("Tạo phiếu thu tiền", "Index", "TienPhat")</a>
                                     </li>
                                     <li class="list-group-item list-group-item-link ">
-                                        <a class="list-group-item-link-a" href="#">Xem danh sách phiếu thu tiền</a>
+                                        <a class="list-group-item-link-a" href="#">@Html.ActionLink("Xem danh sách phiếu thu tiền", "ListPhieuThuTien", "TienPhat")</a>
                                     </li>
                                 </ul>
                             </div>

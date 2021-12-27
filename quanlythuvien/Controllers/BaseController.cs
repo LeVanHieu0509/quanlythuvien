@@ -43,6 +43,23 @@ namespace quanlythuvien.Controllers
             }
         }
 
+        protected void setAlertTest(DateTime? message, string type)
+        {
+            TempData["AlertMessage"] = message;
+            if (type == "success")
+            {
+                TempData["AlertType"] = "alert-success";
+            }
+            else if (type == "warning")
+            {
+                TempData["AlertType"] = "alert-warning";
+            }
+            else if (type == "error")
+            {
+                TempData["AlertType"] = "alert-danger";
+            }
+        }
+
         public void UpdateSoLuongMuonSach(int? mathedocgia, int soluongsachdangmuon)
         {
             var iplThedocgia = new ThedocgiaModel();
@@ -55,5 +72,7 @@ namespace quanlythuvien.Controllers
             var result = iplThedocgia.CountTotalDangMuon(id);
             return result;
         }
+
+        
     }
 }

@@ -77,7 +77,7 @@ namespace quanlythuvien.Controllers
             ViewBag.Sach = new SelectList(db.THONGTINSACHes, "MaSach", "TenSach");
             ViewBag.PhieuMuon = new SelectList(db.PHIEUMUONSACHes, "MaPhieuMuon");
             ViewBag.PhieuTra = new SelectList(db.PHIEUTRASACHes, "MaPhieuTra");
-
+           
             return View();
         }
 
@@ -87,6 +87,7 @@ namespace quanlythuvien.Controllers
         {
             if (ModelState.IsValid)
             {
+                var a = ct_phieumuon.MaPhieuTra;
                 var masach = ct_phieumuon.MaSach;
                 var ilpPhieuMuon = new PhieuMuonModel();
                 string  ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
@@ -101,7 +102,7 @@ namespace quanlythuvien.Controllers
                 else
                 {
                     setAlert("Bạn Tạo chi tiết phiếu mượn sách thất bại vì sách bạn mượn đã hết", "error");
-                    return RedirectToAction("ChiTietMuonTra", "PhieuTra");
+                    return RedirectToAction("CreateDetail", "PhieuMuon");
                    // return RedirectToAction("Index");
                 }
                 

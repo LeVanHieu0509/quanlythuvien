@@ -6,7 +6,7 @@
 <h2>Sách Đang Được Mượn</h2>
 
 <p>
-    @Html.ActionLink("Quay về", "Index","PhieuMuon")
+    @Html.ActionLink("Quay về", "Index","PhieuTra")
 </p>
 
 <table class="table">
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.MaPhieuTra)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaSach)
+            @Html.DisplayNameFor(model => model.THONGTINSACH.TenSach)
         </th>
         
     </tr>
@@ -33,7 +33,7 @@
         @Html.DisplayFor(modeIten => item.MaPhieuTra)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.MaSach)
+        @Html.DisplayFor(modelItem => item.THONGTINSACH.TenSach)
     </td>
    
 

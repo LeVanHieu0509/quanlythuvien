@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Models.Framework.PHIEUTRASACH>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Danh sách độc giả đang mượn sách</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.THEDOCGIA.MaTheDocGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THEDOCGIA.HoTenDocGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THEDOCGIA.LOAIDOCGIA.TenLoaiDocGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongNo)
+        </th>
+
+
+        <th>Chức Năng </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.THEDOCGIA.MaTheDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.THEDOCGIA.HoTenDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.THEDOCGIA.LOAIDOCGIA.TenLoaiDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TongNo)
+    </td>
+  
+
+    <td>
+        @Html.ActionLink("Tạo Phiếu Thu tiền", "Create", new { id = item.MaPhieuTra })
+
+    </td>
+</tr>}
+
+</table>
+
+
+

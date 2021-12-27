@@ -23,23 +23,29 @@
             <th>
                 Mã Sách
             </th>
+            <th>
+                Hạn trả sách
+            </th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaPhieuTra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaPhieuMuon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaSach)
-                </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPhieuTra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPhieuMuon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HanTra)
+        </td>
 
 
-            </tr>
+    </tr>
         }
     </table>
 

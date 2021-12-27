@@ -35,7 +35,7 @@ namespace quanlythuvien.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaTheDocGia,NgayTra,TienPhatKyNay,TongNo")] PHIEUTRASACH phieutra)
+        public ActionResult Create([Bind(Include = "MaTheDocGia,NgayTra")] PHIEUTRASACH phieutra)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +64,16 @@ namespace quanlythuvien.Controllers
             }
             return View(getIdPhieuMuonTra(id));
         }
+        // POST: 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            RemoveIdPhieuMuonTra(id);
+
+            setAlert("Độc giả trả sách thành công", "success");
+            return RedirectToAction("ChiTietMuonTra");
+        }
 
         public List<CT_PHIEUMUONTRA> getIdPhieuMuonTra(int? id)
         {
@@ -84,16 +94,7 @@ namespace quanlythuvien.Controllers
             iplPhieuMuonTra.RemoveMaPhieuMuon(id);
 
         }
-        // POST: 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            RemoveIdPhieuMuonTra(id);
-
-            setAlert("Độc giả trả sách thành công", "success");
-            return RedirectToAction("ChiTietMuonTra");
-        }
+      
 
 
 
@@ -127,10 +128,96 @@ namespace quanlythuvien.Controllers
             }
             catch
             {
-                setAlert("Độc giả chưa trả sách", "error");
+                setAlert("Độc giả chưa trả sách hoặc chưa trả tiền phạt", "error");
                 return RedirectToAction("Index");
             }
             
         }
+
+        //
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+            if (phieutra == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phieutra);
+        }
+
+        // POST:
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaPhieuTra, MaTheDocGia,NgayTra,TienPhatKyNay,TongNo")] PHIEUTRASACH phieutra)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(phieutra).State = EntityState.Modified;
+                db.SaveChanges();
+                setAlert("Thẻ độc giả đã được sửa thành công", "success");
+                return RedirectToAction("Index");
+            }
+            return View(phieutra);
+        }
+
+        //Detail
+        public ActionResult Details(int? id)
+        {
+            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+            try
+            {
+                DateTime date = DateTime.Today;
+                
+                CtPhieuMuonTraModel iplChiTietMuonTra = new CtPhieuMuonTraModel();
+
+                //12/25/2021 12:00:00 AM
+                DateTime? ngaytra = iplChiTietMuonTra.FindNgayTra(phieutra.MaTheDocGia);
+                DateTime? hantra = iplChiTietMuonTra.FindHanTra(id);
+                //     12/25/2021
+                string ngaytra1 = ngaytra.ToString().Substring(0, 10);
+                string hantra1 = hantra.ToString().Substring(0, 10);
+
+                //12252021
+
+                //5/2021
+                int ngaytrasach = Convert.ToInt32(ngaytra1.Substring(3, 2));
+                int thangtrasach = Convert.ToInt32(ngaytra1.Substring(0, 2));
+                int namtrasach = Convert.ToInt32(ngaytra1.Substring(6, 4));
+
+
+                int ngayhantra = Convert.ToInt32(hantra1.Substring(3, 2));
+                int thanghantra = Convert.ToInt32(hantra1.Substring(0, 2));
+                int namhantra = Convert.ToInt32(hantra1.Substring(6, 4));
+
+                int tienphat = (ngaytrasach - ngayhantra) + (thangtrasach - thanghantra) * 30 + (namtrasach - namtrasach) * 325;
+                decimal tienphatkynay = Convert.ToDecimal(tienphat) * 1000;
+
+                iplChiTietMuonTra.UpdateTienPhatKyNay(tienphatkynay, phieutra.MaPhieuTra);
+
+
+
+                setAlert("Thẻ độc giả đã được sửa thành công", "success");
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                if (phieutra == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(phieutra);
+            }
+            catch
+            {
+                return View(phieutra);
+            }
+            
+        }
+
     }
 }

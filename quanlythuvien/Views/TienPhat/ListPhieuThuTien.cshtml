@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Models.Framework.PHIEUTHUTIENPHAT>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Danh sách độc giả đang mượn sách</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhieuPhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUTRASACH.THEDOCGIA.HoTenDocGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTienThu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUTRASACH.TongNo)
+        </th>
+
+
+        <th>Chức Năng </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaPhieuPhat)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.PHIEUTRASACH.THEDOCGIA.HoTenDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoTienThu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PHIEUTRASACH.TongNo)
+    </td>
+
+
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.MaPhieuPhat })
+
+    </td>
+</tr>}
+
+</table>
+
+
+

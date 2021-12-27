@@ -83,7 +83,8 @@ namespace quanlythuvien.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Thêm thất bại");
+                    setAlertLogin("Bạn đã đăng ký thất bại", "error");
+                    return RedirectToAction("Register");
                 }
 
                 return View(_user);
@@ -118,7 +119,7 @@ namespace quanlythuvien.Controllers
                 }
                 else
                 {
-                setAlertLogin("Bạn đã đăng nhập thất bại", "success");
+                setAlertLogin("Bạn đã đăng nhập thất bại", "error");
                     return RedirectToAction("Login");
                 }
         }

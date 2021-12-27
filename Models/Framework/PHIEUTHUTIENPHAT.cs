@@ -10,7 +10,7 @@ namespace Models.Framework
     public partial class PHIEUTHUTIENPHAT
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaPhieuPhat { get; set; }
 
         public decimal? SoTienThu { get; set; }

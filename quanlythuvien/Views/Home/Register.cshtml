@@ -5,53 +5,116 @@
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
+<style>
+</style>
 
-@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "login100-form validate-form" })) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    @if (TempData["AlertMessage"] != null)
-    {
-        <div id="AlertBox" class="alert @TempData["AlertType"] hide">
-            @TempData["AlertMessage"]
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    @*<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="./assets/css/index.css" />
+        <link rel="stylesheet" href="./assets/font/fontawesome-free-5.15.4-web/css/all.min.css">*@
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    @Styles.Render("~/assets/font/fontawesome-free-5.15.4-web/css/all.min.css")
+    @Styles.Render("~/assets/css/index.css")
+</head>
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+      /*  background-image: url(../../assets/image/backgrounf.jpg);
+        background-repeat:no-repeat;
+        background-size:contain;*/
+       
     }
-    <h4>Đăng kí tài khoản mới</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.TaiKhoan, "", new { @class = "input100", @placeholder = "Tên" })
-            @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    #background{
+        position:absolute;
+        width:100%;
+        height:880px
+    }
+</style>
+<body>
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "login100-form validate-form" }))
+    {
+@Html.AntiForgeryToken()
+                <section class="vh-100 gradient-custom">
+    <img id="background" src="../../assets/image/backgrounf.jpg" />
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                                    <div class="card-body p-5 ">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.PasswordFor(model => model.MatKhau, new { @class = "input100", @placeholder = "Mật khẩu" })
-            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                                        <div class="mb-md-5 mt-md-4 pb-5">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "input100", @placeholder = "Nhập lại Mật khẩu" })
+                                            <h2 class="fw-bold mb-2 text-uppercase text-center">Register</h2>
+                                            <p class="text-white-50 mb-5 text-center">Please enter your login and password!</p>
 
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="left" for="typeEmailX">Tai Khoan</label>
+                                                @Html.TextBoxFor(Model => Model.TaiKhoan, "", new { @class = "input100 form-control form-control-lg", @placeholder = "Email" })
+                                                @*<input type="email" id="typeEmailX" class="form-control form-control-lg" />*@
+                                            </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="typePasswordX">Password</label>
+                                                @Html.PasswordFor(Model => Model.MatKhau, new { @class = "input100 form-control form-control-lg", @placeholder = "Password" })
+                                                @*<input type="password" id="typePasswordX" class="form-control form-control-lg" />*@
+
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="typePasswordX">ConfirmPassword</label>
+                                                @Html.PasswordFor(Model => Model.ConfirmPassword, new { @class = "input100 form-control form-control-lg", @placeholder = "Password" })
+                                                @*<input type="password" id="typePasswordX" class="form-control form-control-lg" />*@
+
+                                            </div>
+
+                                            @if (TempData["AlertMessage"] != null)
+                                            {
+                                                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                                                    @TempData["AlertMessage"]
+                                                </div>} 
+                                            <button style=" margin-left: 100px;" class="btn btn-outline-light btn-lg px-5 align-items-center" type="submit">Register</button>
+
+
+
+
+
+                                            <div>
+                                                <p class="mb-0 text-center">Do have an account? <a href="/Home/Login" class="text-white-50 fw-bold">Sign In</a></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>}
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="asset/js/index.js"></script>
+    @Styles.Render("~/assets/js/index.css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
+    @Styles.Render("~/assets/js/index.css")
+
+    <script>$(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(1500).slideUp(500);
+        })</script>
+</body>
+
+
+
+</html>
+
