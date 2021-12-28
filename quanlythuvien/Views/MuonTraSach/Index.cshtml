@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Models.Framework.CT_PHIEUMUONTRA>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Sách Đang Được Mượn</h2>
+
+<p>
+    @Html.ActionLink("Quay về", "Index", "PhieuTra")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhieuMuon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPhieuTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUMUONSACH.THEDOCGIA.HoTenDocGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUMUONSACH.NgayMuon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHIEUTRASACH.NgayTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HanTra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THONGTINSACH.TenSach)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaPhieuMuon)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.MaPhieuTra)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PHIEUMUONSACH.THEDOCGIA.HoTenDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.PHIEUMUONSACH.NgayMuon)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.PHIEUTRASACH.NgayTra)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.HanTra)
+    </td>
+    <td>
+        @Html.DisplayFor(modeIten => item.THONGTINSACH.TenSach)
+    </td>
+
+
+
+</tr>
+}
+
+</table>
+
+

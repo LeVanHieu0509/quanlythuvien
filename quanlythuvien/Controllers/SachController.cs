@@ -44,20 +44,14 @@ namespace quanlythuvien.Controllers
         public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia,NamXuatBan, MaNXB, NgayNhap, TriGia, SoLuongTonKho")] THONGTINSACH sach)
         {
             var iplSach = new ThongtinsachModel();
+            
             if (ModelState.IsValid)
             {
-                var soluongsachton = sach.SoLuongTonKho;
+                
                 db.THONGTINSACHes.Add(sach);
                 db.SaveChanges();
                 //var soluongsachton = iplSach.SoLuongSachTonKho();
-                if (soluongsachton > 0)
-                {
-                    iplSach.updateTinhTrangCon();
-                }
-                else
-                {
-                    iplSach.updateTinhTrangHet();
-                }
+                iplSach.updateTinhTrangCon(sach.MaSach);                      
                 setAlert("Bạn đã thêm sách thành công", "success");
                 return RedirectToAction("Index");
             }

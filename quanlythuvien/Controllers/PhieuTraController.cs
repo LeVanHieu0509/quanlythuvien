@@ -67,10 +67,14 @@ namespace quanlythuvien.Controllers
         // POST: 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id) //29
         {
-            RemoveIdPhieuMuonTra(id);
+            //CT_PHIEUMUONTRA ct_muontra = db.CT_PHIEUMUONTRA.Find(id);
 
+            var iplSach = new ThongtinsachModel();
+            iplSach.updateTinhTrangCon(iplSach.FindMaSach(id));
+
+            RemoveIdPhieuMuonTra(id);
             setAlert("Độc giả trả sách thành công", "success");
             return RedirectToAction("ChiTietMuonTra");
         }
@@ -84,12 +88,15 @@ namespace quanlythuvien.Controllers
 
         public void RemoveIdPhieuMuonTra(int? id)
         {
+          
+
             var iplPhieuMuonTra = new CtPhieuMuonTraModel();
             iplPhieuMuonTra.RemoveMaPhieuTra(id);
            
         }
         public void RemoveIdPhieuMuon(int? id)
         {
+
             var iplPhieuMuonTra = new CtPhieuMuonTraModel();
             iplPhieuMuonTra.RemoveMaPhieuMuon(id);
 
@@ -196,11 +203,14 @@ namespace quanlythuvien.Controllers
                 int tienphat = (ngaytrasach - ngayhantra) + (thangtrasach - thanghantra) * 30 + (namtrasach - namtrasach) * 325;
                 decimal tienphatkynay = Convert.ToDecimal(tienphat) * 1000;
 
-                iplChiTietMuonTra.UpdateTienPhatKyNay(tienphatkynay, phieutra.MaPhieuTra);
+                iplChiTietMuonTra.UpdateTienPhat(tienphatkynay, phieutra.MaPhieuTra);
+                iplChiTietMuonTra.UpdateTienPhatKyNay( phieutra.MaPhieuTra);
 
-
-
-                setAlert("Thẻ độc giả đã được sửa thành công", "success");
+                //if (id!=null)
+                //{
+                //    iplChiTietMuonTra.UpdateTongNo(phieutra.MaPhieuTra);
+                //}
+                //setAlert(iplChiTietMuonTra.TienPhatKyNay(phieutra.MaPhieuTra).ToString(), "success");
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -211,13 +221,13 @@ namespace quanlythuvien.Controllers
                     return HttpNotFound();
                 }
                 return View(phieutra);
+                }
+                catch
+                {
+                    return View(phieutra);
+                }
+
             }
-            catch
-            {
-                return View(phieutra);
-            }
-            
-        }
 
     }
 }

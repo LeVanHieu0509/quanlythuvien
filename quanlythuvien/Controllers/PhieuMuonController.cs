@@ -92,8 +92,13 @@ namespace quanlythuvien.Controllers
                 var ilpPhieuMuon = new PhieuMuonModel();
                 string  ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
                 //setAlert(ischeckTinhTrang, "success");
-                if (ischeckTinhTrang.Trim() == "Con")
+                //DangMuon &&ChuaMuon
+                if (ischeckTinhTrang.Trim() == "ChuaMuon")
                 {
+                    //update tinh trang da muon sach
+                    var iplSach = new ThongtinsachModel();
+                    iplSach.updateTinhTrangHet(masach);
+
                     db.CT_PHIEUMUONTRA.Add(ct_phieumuon);
                     db.SaveChanges();
                     setAlert("Bạn đã tạo chi tiết phiếu mượn sách thành công", "success");

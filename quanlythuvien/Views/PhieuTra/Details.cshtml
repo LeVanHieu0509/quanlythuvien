@@ -4,10 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>PHIEUTRASACH</h4>
+    <div class="d-flex justify-content-between">
+        <h4>CHI TIET PHIEU TRA SACH</h4>
+        <Button>  @Html.ActionLink("Cập nhật tiền phạt", "Details", new { id = Model.MaPhieuTra })</Button>
+    </div>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>

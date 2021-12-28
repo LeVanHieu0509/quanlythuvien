@@ -59,5 +59,7 @@
 
         [NotMapped]
         public List<THONGTINSACH> SachCollection { get; set; }
+
+        public int countSoluongMuon { get; set; }
     }
 }

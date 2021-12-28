@@ -14,6 +14,9 @@ namespace quanlythuvien.Controllers
         // GET: BaoCao
         public ActionResult BaoCaoTheoTheLoai()
         {
+            List<THONGTINSACH> thongtinsach = db.THONGTINSACHes.ToList();
+            List<CT_PHIEUMUONTRA> ctPhieuMuonTra = db.CT_PHIEUMUONTRA.ToList();
+
             
             return View(ListBaoCao());
 

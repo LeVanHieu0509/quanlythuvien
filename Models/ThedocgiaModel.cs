@@ -38,5 +38,18 @@ namespace Models
             var countTotal = context.Database.ExecuteSqlCommand("UPDATE THEDOCGIA SET SLSachDangMuon_=" + soluong + "Where MaTheDocGia =" + mathedocgia);
             
         }
+
+        public void UpdateSLSachMuonQuaHan( int? mathedocgia, int soluong)
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            context.Database.ExecuteSqlCommand("UPDATE THEDOCGIA SET  SlSachMuonQuaHan =" + soluong + "Where MaTheDocGia =" + mathedocgia);
+        }
+
+        public int CountTotalDocGia()
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<THEDOCGIA>("SELECT * FROM THEDOCGIA").Count();
+            return countTotal;
+        }
     }
 }

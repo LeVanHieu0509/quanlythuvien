@@ -12,13 +12,10 @@ namespace quanlythuvien.Controllers
     public class HomeController : BaseController
     {
         private QuanlythuvienDbContext _db = new QuanlythuvienDbContext();
-        public ActionResult Index()
-        {
-            return View();
-        }
+       
     
         //Chuc nang xem danh sach thong tin sach
-        public ActionResult xemdanhsachthongtinsach()
+        public ActionResult Index()
         {
             //Lay thong tin nhung bang khoas ngoai lien quan toi bang thong tin sach là khóa chính
             dynamic dy = new ExpandoObject();

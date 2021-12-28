@@ -26,6 +26,9 @@
             <th>
                 Hạn trả sách
             </th>
+            <th>
+                Tiền phạt
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -43,7 +46,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.HanTra)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.TienPhat)
+            </td>
 
     </tr>
         }

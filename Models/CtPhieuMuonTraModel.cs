@@ -41,6 +41,14 @@ namespace Models
 
         }
 
+        public int CountTotalMuonQuaHan(int? id)
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<CT_PHIEUMUONTRA>("SELECT * FROM CT_PHIEUMUONTRA WHERE TienPhat > 0 and MaPhieuTra = " + id).Count();
+            return countTotal;
+
+        }
+
 
 
         //
@@ -71,12 +79,40 @@ namespace Models
             return hantra;
         }
 
-        public void UpdateTienPhatKyNay(decimal? tienphatkynay, int maphieutra)
+        public void UpdateTienPhat(decimal? tienphat, int maphieutra)
         {
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
-            context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET  TienPhatKyNay =" + tienphatkynay + "Where MaPhieuTra =" + maphieutra);
-            context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET  TongNo =" + tienphatkynay + "Where MaPhieuTra =" + maphieutra);
+            context.Database.ExecuteSqlCommand("UPDATE CT_PHIEUMUONTRA SET  TienPhat =" + tienphat + "Where MaPhieuTra =" + maphieutra);
+            
 
+            
         }
+
+        Decimal? TotalTienPhat = 0;
+        public Decimal? TienPhatKyNay(int? maphieutra)
+        {
+            var listCTPhieuMuonTra = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra =" + maphieutra).ToList();
+            foreach (var item in listCTPhieuMuonTra)
+            {
+                TotalTienPhat = TotalTienPhat +  item.TienPhat;
+            }
+            return TotalTienPhat;
+        }
+
+        public void UpdateTienPhatKyNay(int? maphieutra)
+        {
+            Decimal? tienphatkynay1 = TienPhatKyNay(maphieutra);
+            context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET TienPhatKyNay =" + tienphatkynay1 + "Where MaPhieuTra =" + maphieutra);
+            context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET  TongNo =" + tienphatkynay1 + "Where MaPhieuTra =" + maphieutra);
+        }
+        //public void UpdateTongNo(int? maphieutra)
+        //{
+        //    Decimal? tienphatkynay1 = TienPhatKyNay(maphieutra);
+        //    //context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET TienPhatKyNay =" + tienphatkynay1 + "Where MaPhieuTra =" + maphieutra);
+        //    context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET  TongNo =" + tienphatkynay1 + "Where MaPhieuTra =" + maphieutra);
+        //}
+
+
+       
     }
-}
+} 

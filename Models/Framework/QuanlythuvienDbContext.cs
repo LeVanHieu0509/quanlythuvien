@@ -103,7 +103,8 @@ namespace Models.Framework
                 .WithRequired(e => e.THEDOCGIA)
                 .WillCascadeOnDelete(false);
 
-         
+           
+
 
             modelBuilder.Entity<THELOAISACH>()
                 .HasMany(e => e.THONGTINSACHes)

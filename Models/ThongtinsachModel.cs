@@ -54,23 +54,41 @@ namespace Models
             return a;
         }
 
-        public void updateTinhTrangCon()
+        public void updateTinhTrangCon(int masach)
         {
-           context.Database.ExecuteSqlCommand("Update THONGTINSACH set TinhTrang = 'Con' where SoLuongTonKho > 0");
+           context.Database.ExecuteSqlCommand("Update THONGTINSACH set TinhTrang = 'ChuaMuon' where MaSach="+masach);
         }
-        public void updateTinhTrangHet()
+        public void updateTinhTrangHet(int masach)
         {
-            context.Database.ExecuteSqlCommand("Update THONGTINSACH set TinhTrang = 'Het' where SoLuongTonKho = 0");
+            context.Database.ExecuteSqlCommand("Update THONGTINSACH set TinhTrang = 'DangMuon' where  MaSach=" + masach);
         }
 
         public List<THONGTINSACH> ListSach()
         {
           
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
-            var countTotal = context.Database.SqlQuery<THONGTINSACH>("SELECT * FROM THONGTINSACH").ToList();
-            
+            var countTotal = context.Database.SqlQuery<THONGTINSACH>("SELECT * FROM THONGTINSACH ").ToList();
             return countTotal;
         }
+
+        public List<THELOAISACH> ListTheLoaiSach()
+        {
+
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<THELOAISACH>("SELECT * FROM THELOAISACH").ToList();
+            return countTotal;
+        }
+
+        public List<THONGTINSACH> ListSachTest()
+        {
+            THONGTINSACH tHONGTINSACH = new THONGTINSACH();
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<THONGTINSACH>
+                ("select MaTheLoaiSach, count(*) as SoLuotMuon from THONGTINSACH where TinhTrang = 'ChuaMuon' group by MaTheLoaiSach having count(*) > 0").ToList();          
+            return countTotal;
+        }
+
+
 
 
         public List<BaoCaoViewModel> ListBaoCaoTheoTheLoai(int masach, int matheloaisach)
@@ -87,6 +105,24 @@ namespace Models
 
             return model.ToList();
         }
+
+
+        //
+
+        int masach;
+        public int FindMaSach(int? maphieutra)
+        {
+
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra =" + maphieutra).ToList();
+            foreach (var item in countTotal)
+            {
+                masach = item.MaSach;
+            }
+            //tra ve ma doc gia
+            return masach;
+        }
+
     }
 }
 

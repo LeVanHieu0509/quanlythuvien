@@ -26,6 +26,18 @@ namespace Models
             }
             return a;
         }
+        int b;
+        public int FindMaPhieuTra(int? id)
+        {
+
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<PHIEUTRASACH>("Select * from PHIEUTRASACH where MaTheDocGia =" + id).ToList();
+            foreach (var item in countTotal)
+            {
+                b = item.MaPhieuTra;
+            }
+            return b;
+        }
 
         string check = "";
         public string ischeck(int? id)
