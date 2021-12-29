@@ -84,7 +84,7 @@ namespace quanlythuvien.Controllers
                     return RedirectToAction("Register");
                 }
 
-                return View(_user);
+              
 
 
             }

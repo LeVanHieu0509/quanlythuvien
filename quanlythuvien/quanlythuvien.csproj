@@ -1942,6 +1942,7 @@
     <Content Include="Views\TienPhat\Delete.cshtml" />
     <Content Include="Views\MuonTraSach\Index.cshtml" />
     <Content Include="Views\Docgia\CountTotalDocGia.cshtml" />
+    <Content Include="Views\MuonTraSach\CountTotalMuonTra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

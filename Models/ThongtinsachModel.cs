@@ -12,8 +12,10 @@ namespace Models
     {
         private QuanlythuvienDbContext context = null;
         public QuanlythuvienDbContext db = new QuanlythuvienDbContext();
+       
+      
         public ThongtinsachModel()
-        {
+        {   
             context = new QuanlythuvienDbContext();
         }
         public List<THONGTINSACH> ListAll()
@@ -79,32 +81,29 @@ namespace Models
             return countTotal;
         }
 
+        //public List<THONGTINSACH> ListSachTest1()
+        //{
+        //    THONGTINSACH tHONGTINSACH = new THONGTINSACH();
+        //    var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+        //    var countTotal = context.Database.SqlQuery<THONGTINSACH>
+        //        ("select MaTheLoaiSach, count(*) as SoLuotMuon from THONGTINSACH where TinhTrang = 'ChuaMuon' group by MaTheLoaiSach having count(*) > 0").ToList();
+        //    return countTotal;
+        //}
+
         public List<THONGTINSACH> ListSachTest()
         {
             THONGTINSACH tHONGTINSACH = new THONGTINSACH();
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
             var countTotal = context.Database.SqlQuery<THONGTINSACH>
-                ("select MaTheLoaiSach, count(*) as SoLuotMuon from THONGTINSACH where TinhTrang = 'ChuaMuon' group by MaTheLoaiSach having count(*) > 0").ToList();          
+                ("select * from THONGTINSACH where TinhTrang = 'DangMuon' ").ToList();
+           
             return countTotal;
         }
 
 
 
 
-        public List<BaoCaoViewModel> ListBaoCaoTheoTheLoai(int masach, int matheloaisach)
-        {
-            var model = from a in db.THONGTINSACHes
-                        join c in db.THELOAISACHes                                       
-                        on a.MaTheLoaiSach equals c.MaTheLoaiSach
-                        where a.MaTheLoaiSach == matheloaisach
-                        select new BaoCaoViewModel()
-                        {
-                            MaSach = a.MaSach,
-                            MaTheLoaiSach = c.MaTheLoaiSach
-                        };
-
-            return model.ToList();
-        }
+       
 
 
         //
@@ -122,6 +121,9 @@ namespace Models
             //tra ve ma doc gia
             return masach;
         }
+
+
+
 
     }
 }

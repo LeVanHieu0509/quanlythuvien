@@ -1,34 +1,44 @@
-﻿@model IEnumerable<Models.Framework.THONGTINSACH>
+﻿@model IEnumerable<Models.ListBaoCao>
 @{
     ViewBag.Title = "BaoCaoTheoTheLoai";
 }
 
 <h2>BaoCaoTheoTheLoai</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MaTheLoaiSach)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.MaTheLoaiSach)
-        </th>
-        <th>So Luong muon</th>
-    </tr>
 
-    @foreach (var item in Model)
+@*@if (Model != null)
+{
+    foreach (var m in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaTheLoaiSach)
-            </td>
-          
-          
-        </tr>
+        @Html.DisplayFor(x => m.matheloaisach)
+        @Html.DisplayFor(x => m.countSLSach)
     }
+}*@
+<table class="table">
+        <tr>
+            <th>
+                Mã Thể loại
+            </th>
+            <th>
+                Số lượng sách đang mượn
+            </th>
+            <th>Tỉ lệ</th>
+        </tr>
 
-</table>
+        @foreach (var item in ViewBag.baocao)
+        {
+            <tr>
+                <td>
+                    @item.matheloaisach
+                </td>
+                <td>
+                    @item.countSLSach
+                </td>
+
+
+
+
+            </tr>
+        }
+
+    </table>

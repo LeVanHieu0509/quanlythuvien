@@ -20,6 +20,7 @@
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaSach { get; set; }
 
+   
         [StringLength(30)]
         public string TenSach { get; set; }
 
@@ -60,6 +61,8 @@
         [NotMapped]
         public List<THONGTINSACH> SachCollection { get; set; }
 
-        public int countSoluongMuon { get; set; }
+        [NotMapped]
+        public int CountSLMuon { get; set; }
+
     }
 }

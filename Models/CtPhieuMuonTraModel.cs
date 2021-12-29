@@ -49,6 +49,14 @@ namespace Models
 
         }
 
+        public int CountChiTietMuonTra()
+        {
+            //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+            var countTotal = context.Database.SqlQuery<CT_PHIEUMUONTRA>("SELECT * FROM CT_PHIEUMUONTRA").Count();
+            return countTotal;
+
+        }
+
 
 
         //

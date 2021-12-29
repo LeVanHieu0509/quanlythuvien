@@ -22,5 +22,13 @@ namespace quanlythuvien.Controllers
             return View(phieuTras.ToList());
 
         }
+
+        public ActionResult CountTotalMuonTra()
+        {
+            var CountTotalMuonTra = new CtPhieuMuonTraModel();
+            var totalMuonTra = CountTotalMuonTra.CountChiTietMuonTra();
+            ViewBag.infoMuonTra = totalMuonTra;
+            return PartialView("CountTotalMuonTra");
+        }
     }
 }
