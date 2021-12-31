@@ -20,6 +20,11 @@ namespace Models
             var list = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra ="+id).ToList();
             return list;
         }
+        public List<CT_PHIEUMUONTRA> ListAllPhieuMuonTra()
+        {
+            var list = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA").ToList();
+            return list;
+        }
 
         public void RemoveMaPhieuTra(int? id)
         {
@@ -74,12 +79,24 @@ namespace Models
         }
 
         //
+        //DateTime? hantra;
+        //public DateTime? FindHanTra(int? maPhieutra)
+        //{
+
+        //    //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+        //    var listCTPhieuMuonTra = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra =" + maPhieutra).ToList();
+        //    foreach (var item in listCTPhieuMuonTra)
+        //    {
+        //        hantra = item.HanTra;
+        //    }
+        //    return hantra;
+        //}
         DateTime? hantra;
-        public DateTime? FindHanTra(int? maPhieutra)
+        public DateTime? FindHanTra(int? maPhieutra, int? masach)
         {
 
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
-            var listCTPhieuMuonTra = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra =" + maPhieutra).ToList();
+            var listCTPhieuMuonTra = context.Database.SqlQuery<CT_PHIEUMUONTRA>("Select * from CT_PHIEUMUONTRA where MaPhieuTra =" + maPhieutra + "and MaSach =" + masach).ToList();
             foreach (var item in listCTPhieuMuonTra)
             {
                 hantra = item.HanTra;
@@ -87,10 +104,23 @@ namespace Models
             return hantra;
         }
 
-        public void UpdateTienPhat(decimal? tienphat, int maphieutra)
+        //DateTime? ngaytra;
+        //public DateTime? FindNgayTra(int? mathedocgia)
+        //{
+
+        //    //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
+        //    var listPhieuTraSach = context.Database.SqlQuery<PHIEUTRASACH>("Select * from PHIEUTRASACH where MaTheDocGia =" + mathedocgia).ToList();
+        //    foreach (var item in listPhieuTraSach)
+        //    {
+        //        ngaytra = item.NgayTra;
+        //    }
+        //    return ngaytra;
+        //}
+
+        public void UpdateTienPhat(decimal? tienphat, int maphieutra, int masach)
         {
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
-            context.Database.ExecuteSqlCommand("UPDATE CT_PHIEUMUONTRA SET  TienPhat =" + tienphat + "Where MaPhieuTra =" + maphieutra);
+            context.Database.ExecuteSqlCommand("UPDATE CT_PHIEUMUONTRA SET  TienPhat =" + tienphat + "Where MaPhieuTra =" + maphieutra +"and MaSach="+masach);
             
 
             

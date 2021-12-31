@@ -18,6 +18,45 @@ namespace quanlythuvien.Controllers
         public ActionResult Index()
         {
             var phieuTras = db.PHIEUTRASACHes.Include(s => s.THEDOCGIA);
+            //CtPhieuMuonTraModel iplChiTietMuonTra = new CtPhieuMuonTraModel();            
+            //try
+            //{
+            //    var listAllPhieuMuonTra = iplChiTietMuonTra.ListAllPhieuMuonTra();
+            //    foreach (var itemphieumuontra in listAllPhieuMuonTra)
+            //    {
+            //        PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(itemphieumuontra.MaPhieuTra);
+            //        var listTienPhat = iplChiTietMuonTra.FindMaPhieuTra(itemphieumuontra.MaPhieuTra);
+            //        foreach (var item in listTienPhat)
+            //        {
+            //            DateTime date = DateTime.Today;
+            //            DateTime? ngaytra = iplChiTietMuonTra.FindNgayTra(phieutra.MaTheDocGia);
+            //            DateTime? hantra = iplChiTietMuonTra.FindHanTra(itemphieumuontra.MaPhieuTra, item.MaSach);
+
+            //            string ngaytra1 = ngaytra.ToString().Substring(0, 10);
+            //            string hantra1 = hantra.ToString().Substring(0, 10);
+
+            //            int ngaytrasach = Convert.ToInt32(ngaytra1.Substring(3, 2));
+            //            int thangtrasach = Convert.ToInt32(ngaytra1.Substring(0, 2));
+            //            int namtrasach = Convert.ToInt32(ngaytra1.Substring(6, 4));
+
+            //            int ngayhantra = Convert.ToInt32(hantra1.Substring(3, 2));
+            //            int thanghantra = Convert.ToInt32(hantra1.Substring(0, 2));
+            //            int namhantra = Convert.ToInt32(hantra1.Substring(6, 4));
+
+            //            int tienphat = (ngaytrasach - ngayhantra) + (thangtrasach - thanghantra) * 30 + (namtrasach - namtrasach) * 325;
+            //            decimal tienphatkynay = Convert.ToDecimal(tienphat) * 1000;
+
+            //            iplChiTietMuonTra.UpdateTienPhat(tienphatkynay, phieutra.MaPhieuTra, item.MaSach);
+            //        }
+            //        iplChiTietMuonTra.UpdateTienPhatKyNay(itemphieumuontra.MaPhieuTra);
+
+            //    }
+            //    return View(phieuTras.ToList());
+            //}
+            //catch
+            //{
+            //    return View(phieuTras.ToList());
+            //}
             return View(phieuTras.ToList());
         }
         public ActionResult ChiTietMuonTra()
@@ -58,6 +97,9 @@ namespace quanlythuvien.Controllers
         //Tra Sach
         public ActionResult Delete(int? id)
         {
+            ViewBag.TheDocGia = new SelectList(db.THEDOCGIAs, "MaTheDocGia", "TenTheDocGia");
+            ViewBag.LoaiSach = new SelectList(db.THELOAISACHes, "MaSach", "TenSach");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -69,10 +111,18 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id) //29
         {
-            //CT_PHIEUMUONTRA ct_muontra = db.CT_PHIEUMUONTRA.Find(id);
-
+           
             var iplSach = new ThongtinsachModel();
-            iplSach.updateTinhTrangCon(iplSach.FindMaSach(id));
+            //CT_PHIEUMUONTRA ct_muontra = db.CT_PHIEUMUONTRA.Find(id);
+            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+            var iplTraSach = new PhieuTraModel();
+            var listPhieuTraSach = iplTraSach.ListTraSach(phieutra.MaPhieuTra);
+            foreach (var item in listPhieuTraSach)
+            {
+                iplSach.updateTinhTrangCon(item.MaSach);
+            }
+            //iplSach.updateTinhTrangCon(iplSach.FindMaSach(id));
+
 
             RemoveIdPhieuMuonTra(id);
             setAlert("Độc giả trả sách thành công", "success");
@@ -101,11 +151,6 @@ namespace quanlythuvien.Controllers
             iplPhieuMuonTra.RemoveMaPhieuMuon(id);
 
         }
-      
-
-
-
-
         public ActionResult Remove(int? id)
         {
             if (id == null)
@@ -174,60 +219,42 @@ namespace quanlythuvien.Controllers
         //Detail
         public ActionResult Details(int? id)
         {
-            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);
+            CtPhieuMuonTraModel iplChiTietMuonTra = new CtPhieuMuonTraModel();
+            PHIEUTRASACH phieutra = db.PHIEUTRASACHes.Find(id);            
             try
             {
-                DateTime date = DateTime.Today;
-                
-                CtPhieuMuonTraModel iplChiTietMuonTra = new CtPhieuMuonTraModel();
-
-                //12/25/2021 12:00:00 AM
-                DateTime? ngaytra = iplChiTietMuonTra.FindNgayTra(phieutra.MaTheDocGia);
-                DateTime? hantra = iplChiTietMuonTra.FindHanTra(id);
-                //     12/25/2021
-                string ngaytra1 = ngaytra.ToString().Substring(0, 10);
-                string hantra1 = hantra.ToString().Substring(0, 10);
-
-                //12252021
-
-                //5/2021
-                int ngaytrasach = Convert.ToInt32(ngaytra1.Substring(3, 2));
-                int thangtrasach = Convert.ToInt32(ngaytra1.Substring(0, 2));
-                int namtrasach = Convert.ToInt32(ngaytra1.Substring(6, 4));
-
-
-                int ngayhantra = Convert.ToInt32(hantra1.Substring(3, 2));
-                int thanghantra = Convert.ToInt32(hantra1.Substring(0, 2));
-                int namhantra = Convert.ToInt32(hantra1.Substring(6, 4));
-
-                int tienphat = (ngaytrasach - ngayhantra) + (thangtrasach - thanghantra) * 30 + (namtrasach - namtrasach) * 325;
-                decimal tienphatkynay = Convert.ToDecimal(tienphat) * 1000;
-
-                iplChiTietMuonTra.UpdateTienPhat(tienphatkynay, phieutra.MaPhieuTra);
-                iplChiTietMuonTra.UpdateTienPhatKyNay( phieutra.MaPhieuTra);
-
-                //if (id!=null)
-                //{
-                //    iplChiTietMuonTra.UpdateTongNo(phieutra.MaPhieuTra);
-                //}
-                //setAlert(iplChiTietMuonTra.TienPhatKyNay(phieutra.MaPhieuTra).ToString(), "success");
-                if (id == null)
+                var listTienPhat = iplChiTietMuonTra.FindMaPhieuTra(id);
+                foreach (var item in listTienPhat)
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
+                    DateTime date = DateTime.Today;
+                    //12/25/2021 12:00:00 AM
+                    DateTime? ngaytra = iplChiTietMuonTra.FindNgayTra(phieutra.MaTheDocGia);
+                    DateTime? hantra = iplChiTietMuonTra.FindHanTra(id, item.MaSach);
+                    //     12/25/2021
+                    string ngaytra1 = ngaytra.ToString().Substring(0, 10);
+                    string hantra1 = hantra.ToString().Substring(0, 10);
 
-                if (phieutra == null)
-                {
-                    return HttpNotFound();
+                    int ngaytrasach = Convert.ToInt32(ngaytra1.Substring(3, 2));
+                    int thangtrasach = Convert.ToInt32(ngaytra1.Substring(0, 2));
+                    int namtrasach = Convert.ToInt32(ngaytra1.Substring(6, 4));
+
+                    int ngayhantra = Convert.ToInt32(hantra1.Substring(3, 2));
+                    int thanghantra = Convert.ToInt32(hantra1.Substring(0, 2));
+                    int namhantra = Convert.ToInt32(hantra1.Substring(6, 4));
+
+                    int tienphat = (ngaytrasach - ngayhantra) + (thangtrasach - thanghantra) * 30 + (namtrasach - namtrasach) * 325;
+                    decimal tienphatkynay = Convert.ToDecimal(tienphat) * 1000;
+
+                    iplChiTietMuonTra.UpdateTienPhat(tienphatkynay, phieutra.MaPhieuTra, item.MaSach);
                 }
+                iplChiTietMuonTra.UpdateTienPhatKyNay(phieutra.MaPhieuTra);
                 return View(phieutra);
-                }
-                catch
-                {
-                    return View(phieutra);
-                }
-
             }
-
+            catch
+            {
+                return View(phieutra);
+            }
+        }  
+        
     }
 }

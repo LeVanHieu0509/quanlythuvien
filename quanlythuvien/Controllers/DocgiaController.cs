@@ -52,19 +52,26 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "HotenDocGia, MaLoaiDocGia,NgaySinh,DiaChi,Email,NgayLapThe")] THEDOCGIA docgia)
         {
-            if (ModelState.IsValid)
+            DateTime ngaysinh = Convert.ToDateTime(docgia.NgaySinh);;
+            DateTime checkAge = DateTime.Now.AddYears(-18);
+            DateTime checkAge2 = DateTime.Now.AddYears(-55);
+            //setAlert(added.ToString(), "success");
+            if (ModelState.IsValid && ngaysinh < checkAge && ngaysinh > checkAge2)
             {
+                
+                //the co gia tri 6 thang
+                DateTime date = Convert.ToDateTime(docgia.NgayLapThe).AddDays(180);
+                docgia.NgayHetHanThe = date;
                 db.THEDOCGIAs.Add(docgia);
                 db.SaveChanges();
-                setAlert("Thêm thẻ độc giả thành công","success");
+                setAlert("Thêm thẻ độc giả thành công", "success");
                 return RedirectToAction("Index");
             }
             else
             {
-                ModelState.AddModelError("", "Them the doc gia khong thanh cong");
-            }
-
-            return View(docgia);
+                setAlert("Độc giả không nằm trong độ tuổi cho phép mượn sách", "error");
+                return View(docgia);
+            }            
         }
 
         //xoa
@@ -89,10 +96,19 @@ namespace quanlythuvien.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             THEDOCGIA docgia = db.THEDOCGIAs.Find(id);
-            db.THEDOCGIAs.Remove(docgia);
-            db.SaveChanges();
-            setAlert("Thẻ độc giả đã được xóa", "success");
-            return RedirectToAction("Index");
+            try
+            { 
+                db.THEDOCGIAs.Remove(docgia);
+                db.SaveChanges();
+                setAlert("Thẻ độc giả đã được xóa", "success");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                setAlert("Không thể xóa độc giả đang mượn sách", "error");
+                return View(docgia);
+            }
+            
         }
 
         //edit
@@ -199,19 +215,20 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateLoaiDocGia([Bind(Include = "TenLoaiDocGia")] LOAIDOCGIA loaidocgia)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && db.LOAIDOCGIAs.Count() <= 2)
             {
-                db.LOAIDOCGIAs.Add(loaidocgia);
-                db.SaveChanges();
-                setAlert("Thêm loại độc giả thành công", "success");
-                return RedirectToAction("Create");
+                    db.LOAIDOCGIAs.Add(loaidocgia);
+                    db.SaveChanges();
+                    setAlert("Thêm loại độc giả thành công", "success");
+                    return RedirectToAction("Create");
+                               
             }
             else
             {
-                ModelState.AddModelError("", "Them loai doc gia khong thanh cong");
-            }
-
-            return View(loaidocgia);
+               
+                setAlert("Bạn chỉ được thêm tối đa 2 loại độc giả", "error");
+                return View(loaidocgia);
+            }          
         }
     }
 

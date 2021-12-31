@@ -50,5 +50,24 @@ namespace Models
             }
             return check;
         }
+        int checkthedocgia;
+        DateTime? ngayhethanthe;
+        public DateTime? ischeckTheDocGia(int? id)
+        {
+
+            var countTotal = context.Database.SqlQuery<PHIEUMUONSACH>("Select * from PHIEUMUONSACH where MaPhieuMuon =" + id).ToList();
+            foreach (var item in countTotal)
+            {
+                checkthedocgia = item.MaTheDocGia;
+            }
+            var countTotal1 = context.Database.SqlQuery<THEDOCGIA>("Select * from THEDOCGIA where MaTheDocGia =" + checkthedocgia).ToList();
+
+            foreach (var item in countTotal1)
+            {
+                ngayhethanthe = item.NgayHetHanThe;
+            }
+            return ngayhethanthe;
+        } 
+        
     }
 }

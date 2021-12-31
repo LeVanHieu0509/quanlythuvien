@@ -1,0 +1,101 @@
+﻿@model Models.Framework.THONGTINSACH
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    select {
+        width: 100%;
+        height: 40px;
+        border: 1px #808080;
+    }
+</style>
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>THONGTINSACH</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaSach)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSach, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.loaisach1.TenTheLoaiSach, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("ChoosesLoaiSach", "Sach");}
+                @Html.ValidationMessageFor(model => model.MaTheLoaiSach, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NamXuatBan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NamXuatBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NamXuatBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayNhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayNhap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TriGia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TriGia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TriGia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nhaxuatban1.TenNXB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("ChoosesNXB", "Sach");}
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tacgia1.TenTacGia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ Html.RenderAction("ChoosesTacGia", "Sach");}
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoLuongTonKho, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

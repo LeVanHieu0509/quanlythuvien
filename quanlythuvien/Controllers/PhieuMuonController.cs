@@ -85,20 +85,23 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateDetail([Bind(Include ="MaPhieuMuon,SoNgayMuon,HanTra,MaSach,MaPhieuTra")] CT_PHIEUMUONTRA ct_phieumuon)
         {
+
             if (ModelState.IsValid)
             {
                 var a = ct_phieumuon.MaPhieuTra;
+                
                 var masach = ct_phieumuon.MaSach;
                 var ilpPhieuMuon = new PhieuMuonModel();
                 string  ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
+                DateTime?  ischeckTheDocGia = ilpPhieuMuon.ischeckTheDocGia(masach);
+
                 //setAlert(ischeckTinhTrang, "success");
                 //DangMuon &&ChuaMuon
-                if (ischeckTinhTrang.Trim() == "ChuaMuon")
+                if (ischeckTinhTrang.Trim() == "ChuaMuon") //&& ischeckTheDocGia != null
                 {
                     //update tinh trang da muon sach
                     var iplSach = new ThongtinsachModel();
                     iplSach.updateTinhTrangHet(masach);
-
                     db.CT_PHIEUMUONTRA.Add(ct_phieumuon);
                     db.SaveChanges();
                     setAlert("Bạn đã tạo chi tiết phiếu mượn sách thành công", "success");
@@ -150,7 +153,54 @@ namespace quanlythuvien.Controllers
            
         }
 
-        
+
+        //
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUMUONSACH phieumuon = db.PHIEUMUONSACHes.Find(id);
+            if (phieumuon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phieumuon);
+        }
+
+        // POST:
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaPhieuMuon, MaTheDocGia,NgayMuon,TinhTrangMuon")] PHIEUMUONSACH phieumuon)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(phieumuon).State = EntityState.Modified;
+                db.SaveChanges();
+                setAlert("Phiếu mượn đã được sửa thành công", "success");
+                return RedirectToAction("Index");
+            }
+            return View(phieumuon);
+        }
+
+
+        // GET
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PHIEUMUONSACH phieumuon = db.PHIEUMUONSACHes.Find(id);
+            if (phieumuon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(phieumuon);
+        }
+
+
 
     }
 }

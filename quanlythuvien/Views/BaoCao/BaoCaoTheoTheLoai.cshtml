@@ -5,40 +5,42 @@
 
 <h2>BaoCaoTheoTheLoai</h2>
 
-
-@*@if (Model != null)
-{
-    foreach (var m in Model)
-    {
-        @Html.DisplayFor(x => m.matheloaisach)
-        @Html.DisplayFor(x => m.countSLSach)
-    }
-}*@
 <table class="table">
-        <tr>
-            <th>
-                Mã Thể loại
-            </th>
-            <th>
-                Số lượng sách đang mượn
-            </th>
-            <th>Tỉ lệ</th>
-        </tr>
-
-        @foreach (var item in ViewBag.baocao)
+    <tr>
+        <th>
+            Mã Thể loại
+        </th>
+        <th>
+            Số lượng sách đang mượn
+        </th>
+        <th>Tỉ lệ</th>
+    </tr>
+    @{ try
         {
-            <tr>
-                <td>
-                    @item.matheloaisach
-                </td>
-                <td>
-                    @item.countSLSach
-                </td>
-
-
-
-
-            </tr>
+            foreach (var item in ViewBag.baocao)
+            {
+                <tr>
+                    <td>
+                        @item.matheloaisach
+                    </td>
+                    <td>
+                        @item.countSLSach
+                    </td>
+                    <td>
+                        @item.tile %
+                    </td>
+                </tr>
+            }
+            <p>Tổng số sách đang mượn: @Html.Action("CountTotalMuonTra", "MuonTraSach")</p>
         }
+        catch
+        {
+                <caption style="text-align:center">Chưa có dữ liệu</caption>     
+               
+        }
+    }
 
-    </table>
+</table>
+
+
+

@@ -44,10 +44,11 @@ namespace quanlythuvien.Controllers
         public ActionResult Create([Bind(Include = "TenSach, MaTheLoaiSach, MaTacGia,NamXuatBan, MaNXB, NgayNhap, TriGia, SoLuongTonKho")] THONGTINSACH sach)
         {
             var iplSach = new ThongtinsachModel();
+            DateTime namXB = Convert.ToDateTime(sach.NamXuatBan);
+            DateTime checkNamXB = DateTime.Now.AddYears(-8);
             
-            if (ModelState.IsValid)
-            {
-                
+            if (ModelState.IsValid && namXB > checkNamXB)
+            {               
                 db.THONGTINSACHes.Add(sach);
                 db.SaveChanges();
                 //var soluongsachton = iplSach.SoLuongSachTonKho();
@@ -55,7 +56,12 @@ namespace quanlythuvien.Controllers
                 setAlert("Bạn đã thêm sách thành công", "success");
                 return RedirectToAction("Index");
             }
-            return View(sach);
+            else
+            {
+                setAlert("Chỉ nhận sách xuất bản trong vòng 8 năm", "error");
+                return View(sach);
+            }
+          
         }
 
         public ActionResult ChoosesLoaiSach()
@@ -175,7 +181,7 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateTacGia([Bind(Include = "TenTacGia")] TACGIA tacgia)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && db.TACGIAs.Count() <= 100)
             {
                 db.TACGIAs.Add(tacgia);
                 db.SaveChanges();
@@ -184,10 +190,11 @@ namespace quanlythuvien.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Thêm tác giả thất bại");
+                setAlert("Bạn chỉ được thêm tối đa 100 tác giả", "error");
+                return View(tacgia);
             }
 
-            return View(tacgia);
+            
         }
         //add LoaiSach
 
@@ -200,7 +207,7 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateTheLoaiSach([Bind(Include = "TenTheLoaiSach")] THELOAISACH theloaisach)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid  && db.THELOAISACHes.Count() <= 3)
             {
                 db.THELOAISACHes.Add(theloaisach);
                 db.SaveChanges();
@@ -209,10 +216,11 @@ namespace quanlythuvien.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Thêm thể loại sách thất bại");
+                setAlert("Bạn chỉ được thêm tối đa 3 thể loại sách", "error");
+                return View(theloaisach);
             }
 
-            return View(theloaisach);
+           
         }
 
         //them nxb
@@ -226,6 +234,7 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateNXB([Bind(Include = "TenNXB")] NHAXUATBAN nxb)
         {
+            
             if (ModelState.IsValid)
             {
                 db.NHAXUATBANs.Add(nxb);

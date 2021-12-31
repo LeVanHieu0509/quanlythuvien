@@ -17,7 +17,18 @@ namespace Models
         public void UpdateTongNo(decimal? tienthu,int maphieutra)
         {
             //var count = context.Database.SqlQuery(" SELECT * FROM dbo.THONGTINSACH").Count()
-           context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET TongNo= TienPhatKyNay -" + tienthu + "Where MaPhieuTra =" + maphieutra);
+           context.Database.ExecuteSqlCommand("UPDATE PHIEUTRASACH SET TongNo = TienPhatKyNay -" + tienthu + "Where MaPhieuTra =" + maphieutra);
+        }
+
+        Decimal? TotalTongNo;
+        public Decimal? TotalNo(int? maphieutra)
+        {
+            var listCTPhieuMuonTra = context.Database.SqlQuery<PHIEUTRASACH>("Select * from PHIEUTRASACH where MaPhieuTra =" + maphieutra).ToList();
+            foreach (var item in listCTPhieuMuonTra)
+            {
+                TotalTongNo = item.TongNo;
+            }
+            return TotalTongNo;
         }
     }
 }

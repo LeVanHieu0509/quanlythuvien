@@ -70,9 +70,11 @@
     <Compile Include="Framework\THONGTINSACH.cs" />
     <Compile Include="Framework\User.cs" />
     <Compile Include="ListBaoCao.cs" />
+    <Compile Include="ListBaoCaoTraTre.cs" />
     <Compile Include="NhaxuatbanModel.cs" />
     <Compile Include="PhieuMuonModel.cs" />
     <Compile Include="PhieuThuTienModel.cs" />
+    <Compile Include="PhieuTraModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TacgiaModel.cs" />
     <Compile Include="ThedocgiaModel.cs" />

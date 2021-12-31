@@ -8,12 +8,16 @@ namespace Models
 {
     public class ListBaoCao
     {
-        public string matheloaisach { get; set; }
-        public string countSLSach { get; set; }
-        public ListBaoCao(string matheloaisach, string countSLSach)
+        public int matheloaisach { get; set; }
+        public int countSLSach { get; set; }
+
+       public double tile { get; set;  }
+
+        public ListBaoCao(int matheloaisach, int countSLSach, double tile)
         {
             this.matheloaisach = matheloaisach;
             this.countSLSach = countSLSach;
+            this.tile = tile;
         }
     }
 }

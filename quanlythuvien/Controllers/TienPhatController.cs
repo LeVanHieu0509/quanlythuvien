@@ -37,16 +37,26 @@ namespace quanlythuvien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaPhieuTra, SoTienThu ")] PHIEUTHUTIENPHAT phieuthu)
+        public ActionResult Create([Bind(Include = "MaPhieuTra,SoTienThu")] PHIEUTHUTIENPHAT phieuthu)
         {
             PhieuThuTienModel iplPhieuThuTien = new PhieuThuTienModel();
-            iplPhieuThuTien.UpdateTongNo(phieuthu.SoTienThu, phieuthu.MaPhieuTra);
-            if (ModelState.IsValid)
+            if (ModelState.IsValid )
             {
-                db.PHIEUTHUTIENPHATs.Add(phieuthu);
-                db.SaveChanges();
-                setAlert("Thêm phiếu thu thành công", "success");
-                return RedirectToAction("Index");
+                if(phieuthu.SoTienThu <= iplPhieuThuTien.TotalNo(phieuthu.MaPhieuTra))
+                {             
+                    iplPhieuThuTien.UpdateTongNo(phieuthu.SoTienThu, phieuthu.MaPhieuTra);
+                    db.PHIEUTHUTIENPHATs.Add(phieuthu);
+                    db.SaveChanges();
+                    setAlert("Thêm phiếu thu thành công", "success");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    setAlert("Số tiền thu không được vượt quá tổng nợ", "error");
+                    return View(phieuthu);
+
+                }
+
             }
             else
             {

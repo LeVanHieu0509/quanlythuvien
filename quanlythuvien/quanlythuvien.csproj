@@ -1943,6 +1943,12 @@
     <Content Include="Views\MuonTraSach\Index.cshtml" />
     <Content Include="Views\Docgia\CountTotalDocGia.cshtml" />
     <Content Include="Views\MuonTraSach\CountTotalMuonTra.cshtml" />
+    <Content Include="Views\BaoCao\BaoCaoSachTraTre.cshtml" />
+    <Content Include="Views\PhieuMuon\Edit.cshtml" />
+    <Content Include="Views\PhieuMuon\Details.cshtml" />
+    <Content Include="Views\TraCuu\Edit.cshtml" />
+    <Content Include="Views\TraCuu\Delete.cshtml" />
+    <Content Include="Views\TraCuu\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

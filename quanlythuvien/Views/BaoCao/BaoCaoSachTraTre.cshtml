@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Models.ListBaoCaoTraTre>
+@{
+    ViewBag.Title = "BaoCaoTheoSachTraTre";
+}
+
+<h2>BaoCaoTheoTheLoai</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Ngày mượn
+        </th>
+        <th>Số ngày trả trễ</th>
+    </tr>
+    @{
+        try
+        {
+            foreach (var item in ViewBag.baocaotratre)
+            {
+                <tr>
+                    <td>
+                        @item.tensach
+                    </td>
+                    <td>
+                        @item.ngaymuon
+                    </td>
+                    <td>
+                        @item.songaytratre Ngày
+                    </td>
+                </tr>
+                @*<p>Tổng số sách đang mượn: @Html.Action("CountTotalMuonTra", "MuonTraSach")</p>*@
+            }
+        }
+        catch
+        {
+            <caption style="text-align:center">Chưa có dữ liệu</caption>
+        }
+    }
+
+
+</table>
+
+
+
