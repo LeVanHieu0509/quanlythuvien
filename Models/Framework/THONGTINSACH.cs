@@ -18,18 +18,27 @@
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Mã sách")]
+
         public int MaSach { get; set; }
 
    
         [StringLength(30)]
+        [Display(Name = "Tên sách")]
+
         public string TenSach { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Tác giả")]
+
         public string TacGia { get; set; }
+        [Display(Name = "Năm xuất bản")]
 
         public DateTime? NamXuatBan { get; set; }
+        [Display(Name = "Ngày nhập")]
 
         public DateTime? NgayNhap { get; set; }
+        [Display(Name = "Trị giá")]
 
         public decimal? TriGia { get; set; }
 
@@ -40,10 +49,12 @@
 
         public int MaTacGia { get; set; }
 
-        [Display(Name = "SoLuong")]
+        [Display(Name = "Số lượng")]
         public int SoLuongTonKho { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Tình trạng")]
+
         public string TinhTrang { get; set; }
 
         public virtual NHAXUATBAN nhaxuatban1 { get; set; }

@@ -24,26 +24,41 @@
         public int MaTheDocGia { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Họ tên độc giả")]
+
         public string HoTenDocGia { get; set; }
+        [Display(Name = "Ngày sinh")]
 
         public DateTime? NgaySinh { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Địa chỉ")]
+
         public string DiaChi { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Email")]
+
         public string Email { get; set; }
+        [Display(Name = "Ngày lập thẻ")]
+
 
         public DateTime? NgayLapThe { get; set; }
 
         public int MaLoaiDocGia { get; set; }
 
+        [Display(Name = "Ngày hết hạn thẻ")]
+
         public DateTime? NgayHetHanThe { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Số lượng sách mượn quá hạn")]
+
         public string SLSachMuonQuaHan { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Số luọng sách đang mượn")]
+
         public string SLSachDangMuon_ { get; set; }
 
         public virtual LOAIDOCGIA LOAIDOCGIA { get; set; }

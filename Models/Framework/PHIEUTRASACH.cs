@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -18,13 +18,18 @@ namespace Models.Framework
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Tên phiếu trả")]
         public int MaPhieuTra { get; set; }
 
         public int MaTheDocGia { get; set; }
+        [Display(Name = "Tổng nợ")]
 
         public decimal? TongNo { get; set; }
 
+        [Display(Name = "Tiền phạt kỳ này")]
+
         public decimal? TienPhatKyNay { get; set; }
+        [Display(Name = "Ngày trả")]
 
         public DateTime? NgayTra { get; set; }
 

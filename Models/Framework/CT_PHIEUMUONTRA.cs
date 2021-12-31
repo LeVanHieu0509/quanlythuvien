@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -11,15 +11,23 @@ namespace Models.Framework
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Mã Phiếu Mượn")]
+
         public int MaPhieuMuon { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "Mã Phiếu Trả")]
+
         public int MaPhieuTra { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Số Ngày Mượn")]
+
         public string SoNgayMuon { get; set; }
+
+        [Display(Name = "Tiền phạt")]
 
         public decimal? TienPhat { get; set; }
 

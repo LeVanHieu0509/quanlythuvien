@@ -10,20 +10,19 @@
         border: 1px #808080;
     }
 </style>
-<h2>Create</h2>
+<h2>Tạo phiếu thu tiền phạt</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>PHIEUTHUTIENPHAT</h4>
     <hr />
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.MaPhieuTra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-3">Họ tên độc giả</label>
         <div class="col-md-10">
             @{ Html.RenderAction("ChoosesPhieuTra", "PhieuTra");}
             @Html.ValidationMessageFor(model => model.MaPhieuTra, "", new { @class = "text-danger" })
@@ -31,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.SoTienThu, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.SoTienThu, htmlAttributes: new { @class = "control-label col-md-3" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.SoTienThu, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.SoTienThu, "", new { @class = "text-danger" })

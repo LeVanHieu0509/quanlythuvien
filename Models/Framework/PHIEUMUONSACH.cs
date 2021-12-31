@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -18,15 +18,17 @@ namespace Models.Framework
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
+        [Display(Name = "Tên Phiếu Mượn")]
         public int MaPhieuMuon { get; set; }
 
-        [Display(Name = "TenDocGia")]
+        [Display(Name = "Ten Doc Gia")]
         public int MaTheDocGia { get; set; }
+        [Display(Name = "Ngày mượn")]
 
         public DateTime? NgayMuon { get; set; }
 
         [StringLength(20)]
-        [Display(Name = "TinhTrangSach")]
+        [Display(Name = "Tình trạng sách")]
         public string TinhTrangMuon { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

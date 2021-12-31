@@ -3,12 +3,12 @@
     ViewBag.Title = "BaoCaoTheoTheLoai";
 }
 
-<h2>BaoCaoTheoTheLoai</h2>
+<h2>Báo cáo sách mượn theo thể loại</h2>
 
 <table class="table">
     <tr>
         <th>
-            Mã Thể loại
+           Tên thể loại
         </th>
         <th>
             Số lượng sách đang mượn
@@ -19,17 +19,18 @@
         {
             foreach (var item in ViewBag.baocao)
             {
-                <tr>
-                    <td>
-                        @item.matheloaisach
-                    </td>
-                    <td>
-                        @item.countSLSach
-                    </td>
-                    <td>
-                        @item.tile %
-                    </td>
-                </tr>
+        <tr>
+
+            <td>
+                @item.tensach
+            </td>
+            <td>
+                @item.countSLSach
+            </td>
+            <td>
+                @item.tile %
+            </td>
+        </tr>
             }
             <p>Tổng số sách đang mượn: @Html.Action("CountTotalMuonTra", "MuonTraSach")</p>
         }

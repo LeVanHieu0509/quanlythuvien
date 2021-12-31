@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace Models.Framework
         public int MaNXB { get; set; }
 
         [StringLength(30)]
-        [Display(Name = "NXB")]
+        [Display(Name = "Nhà xuất bản")]
         public string TenNXB { get; set; }
 
 

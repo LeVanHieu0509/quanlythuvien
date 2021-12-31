@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -17,10 +17,12 @@ namespace Models.Framework
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Mã loại sách")]
+
         public int MaTheLoaiSach { get; set; }
 
         [StringLength(30)]
-        [Display(Name = "LoaiSach")]
+        [Display(Name = "Loại sách")]
         public string TenTheLoaiSach { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

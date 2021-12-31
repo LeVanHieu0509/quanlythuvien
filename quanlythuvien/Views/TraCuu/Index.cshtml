@@ -7,9 +7,9 @@
 
 @using (Html.BeginForm("Index", "TraCuu", FormMethod.Get))
 {
-    <b>Search by: </b> @Html.RadioButton("searchBy", "TenSach", true) <text>Ten sach</text>
-    @Html.RadioButton("searchBy", "TenTacGia") <text>Ten Tac Gia</text>
-    @Html.RadioButton("searchBy", "TenNhaXuatBan") <text>TenNhaXuatBan</text>
+    <b>Search by: </b> @Html.RadioButton("searchBy", "TenSach", true) <text>Tên sách</text>
+    @Html.RadioButton("searchBy", "TenTacGia") <text>Tên tác giả</text>
+    @Html.RadioButton("searchBy", "TenNhaXuatBan") <text>Nhà xuất bản</text>
     @Html.RadioButton("searchBy", "none") <text>None</text>
    
 

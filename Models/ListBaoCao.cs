@@ -12,12 +12,15 @@ namespace Models
         public int countSLSach { get; set; }
 
        public double tile { get; set;  }
+        public string tensach { get; set; }
 
-        public ListBaoCao(int matheloaisach, int countSLSach, double tile)
+
+        public ListBaoCao(int matheloaisach, int countSLSach, double tile,string tensach)
         {
             this.matheloaisach = matheloaisach;
             this.countSLSach = countSLSach;
             this.tile = tile;
+            this.tensach = tensach;
         }
     }
 }

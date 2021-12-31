@@ -27,9 +27,10 @@ namespace quanlythuvien.Controllers
                 ArrayList arr = new ArrayList();
 
                 var query = thongtinsach.AsEnumerable().Where(r => r.TinhTrang == "DangMuon  ")
-                        .GroupBy(r => new { matheloaisach = r.MaTheLoaiSach })
+                        .GroupBy(r => new { matheloaisach = r.MaTheLoaiSach, tensach = r.loaisach1.TenTheLoaiSach })
                         .Select(grp => new
                         {
+                            tensach = grp.Key.tensach,
                             MaTheLoaiSach = grp.Key.matheloaisach,
                             Count = grp.Count()
                         });
@@ -37,7 +38,7 @@ namespace quanlythuvien.Controllers
                 foreach (var item in query)
                 {
 
-                    arr.Add(new ListBaoCao(item.MaTheLoaiSach, item.Count, Convert.ToDouble((item.Count * 100) / countchitietmuontra)));
+                    arr.Add(new ListBaoCao(item.MaTheLoaiSach, item.Count, Convert.ToDouble((item.Count * 100) / countchitietmuontra), item.tensach));
 
                 }
                 ViewBag.baocao = arr;

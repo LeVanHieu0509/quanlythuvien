@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +18,7 @@ namespace Models.Framework
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MaPhieuNhapSach { get; set; }
+        [Display(Name = "Ngày nhập sách")]
 
         public DateTime? NgayNhapSach { get; set; }
 

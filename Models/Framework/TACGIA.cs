@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace Models.Framework
         public int MaTacGia { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "TacGia")]
+        [Display(Name = "Tác giả")]
         public string TenTacGia { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +11,13 @@ namespace Models.Framework
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Mã phiếu phạt")]
+
         public int MaPhieuPhat { get; set; }
+        [Display(Name = "Số tiền thu")]
 
         public decimal? SoTienThu { get; set; }
+        [Display(Name = "Mã phiếu trả")]
 
         public int MaPhieuTra { get; set; }
 

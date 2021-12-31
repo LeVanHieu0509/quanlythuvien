@@ -14,11 +14,14 @@
         public int idUser { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Tài khoản")]
 
         public string TaiKhoan { get; set; }
 
         
         [StringLength(30)]
+        [Display(Name = "Mật khẩu")]
+
         public string MatKhau { get; set; }
         
 

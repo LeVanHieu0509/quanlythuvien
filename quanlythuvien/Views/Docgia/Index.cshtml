@@ -4,20 +4,17 @@
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Thông tin thẻ độc giả</h2>
+<h2>Danh sách thông tin thẻ độc giả</h2>
 
 @using (Html.BeginForm("Index", "DocGia", FormMethod.Get))
 {
 
-    <b>Search by: </b> @Html.RadioButton("searchBy", "HoTenDocGia", true) <text>Ho Ten Doc Gia</text>
-    @Html.RadioButton("searchBy", "TenLoaiDocGia") <text>Ten Loai Doc Gia</text>
+    <b>Search by: </b> @Html.RadioButton("searchBy", "HoTenDocGia", true) <text>Họ tên độc giả</text>
+    @Html.RadioButton("searchBy", "TenLoaiDocGia") <text>Tên loại độc giả</text>
     @Html.RadioButton("searchBy", "none") <text>None</text>
-
-
     <br />
     @Html.TextBox("Search")
     <input type="submit" value="search" />
-
 }
 
 
@@ -28,9 +25,6 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.HoTenDocGia)
-        </th>
-        <th>
-            @*@{ Html.RenderAction("ChoosesLoaiDG", "Docgia");}*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NgaySinh)
@@ -52,8 +46,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.HoTenDocGia)
-            </td>
-            <td>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NgaySinh)

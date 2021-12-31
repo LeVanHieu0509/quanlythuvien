@@ -1,4 +1,4 @@
-namespace Models.Framework
+﻿namespace Models.Framework
 {
     using System;
     using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace Models.Framework
         public int MaLoaiDocGia { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "Loại độc giả")]
 
         public string TenLoaiDocGia { get; set; }
 
