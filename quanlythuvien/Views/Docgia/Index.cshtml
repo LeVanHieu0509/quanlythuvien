@@ -4,7 +4,10 @@
 @{ ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<h2>Danh sách thông tin thẻ độc giả</h2>
+<div class="d-flex justify-content-between">
+    <h2>Danh sách thông tin thẻ độc giả</h2>
+</div>
+
 
 @using (Html.BeginForm("Index", "DocGia", FormMethod.Get))
 {
@@ -17,9 +20,8 @@
     <input type="submit" value="search" />
 }
 
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới thẻ độc giả", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,6 +32,9 @@
             @Html.DisplayNameFor(model => model.NgaySinh)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LOAIDOCGIA.TenLoaiDocGia)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DiaChi)
         </th>
         <th>
@@ -38,33 +43,36 @@
         <th>
             @Html.DisplayNameFor(model => model.NgayLapThe)
         </th>
-        <th>Chon Chuc Nang</th>
+        <th>Chọn chức năng</th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTenDocGia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.NgayLapThe)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaTheDocGia }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaTheDocGia }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaTheDocGia })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.HoTenDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgaySinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LOAIDOCGIA.TenLoaiDocGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.NgayLapThe)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.MaTheDocGia }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaTheDocGia }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.MaTheDocGia })
+    </td>
+</tr>
 }
 
 </table>

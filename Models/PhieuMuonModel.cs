@@ -52,7 +52,7 @@ namespace Models
         }
         int checkthedocgia;
         DateTime? ngayhethanthe;
-        public DateTime? ischeckTheDocGia(int? id)
+        public DateTime? ischeckNgayHetHanThe(int? id)
         {
 
             var countTotal = context.Database.SqlQuery<PHIEUMUONSACH>("Select * from PHIEUMUONSACH where MaPhieuMuon =" + id).ToList();
@@ -67,7 +67,54 @@ namespace Models
                 ngayhethanthe = item.NgayHetHanThe;
             }
             return ngayhethanthe;
-        } 
-        
+        }
+
+        int checkthedocgia1;
+        DateTime? ngaylapthe;
+        public DateTime? ischeckNgayLapThe(int? id)
+        {
+
+            var countTotal = context.Database.SqlQuery<PHIEUMUONSACH>("Select * from PHIEUMUONSACH where MaPhieuMuon =" + id).ToList();
+            foreach (var item in countTotal)
+            {
+                checkthedocgia1 = item.MaTheDocGia;
+            }
+            var countTotal1 = context.Database.SqlQuery<THEDOCGIA>("Select * from THEDOCGIA where MaTheDocGia =" + checkthedocgia1).ToList();
+
+            foreach (var item in countTotal1)
+            {
+                ngaylapthe = item.NgayLapThe;
+            }
+            return ngaylapthe;
+        }
+
+        int mathedocgia1;
+        public int getMathedocgia(int? id)
+        {
+
+            var countTotal = context.Database.SqlQuery<PHIEUMUONSACH>("Select * from PHIEUMUONSACH where MaPhieuMuon =" + id).ToList();
+            foreach (var item in countTotal)
+            {
+                mathedocgia1 = item.MaTheDocGia;
+            }
+            return mathedocgia1;
+        }
+
+
+        DateTime? ngaymuon;
+        public DateTime? ischeckNgayMuon(int? id)
+        {
+
+            var countTotal = context.Database.SqlQuery<PHIEUMUONSACH>("Select * from PHIEUMUONSACH where MaPhieuMuon =" + id).ToList();
+            foreach (var item in countTotal)
+            {
+                ngaymuon = item.NgayMuon;
+            }
+            
+            return ngaymuon;
+        }
+
+
+
     }
 }

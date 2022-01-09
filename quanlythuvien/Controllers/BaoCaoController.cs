@@ -37,7 +37,6 @@ namespace quanlythuvien.Controllers
 
                 foreach (var item in query)
                 {
-
                     arr.Add(new ListBaoCao(item.MaTheLoaiSach, item.Count, Convert.ToDouble((item.Count * 100) / countchitietmuontra), item.tensach));
 
                 }

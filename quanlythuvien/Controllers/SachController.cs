@@ -186,7 +186,7 @@ namespace quanlythuvien.Controllers
                 db.TACGIAs.Add(tacgia);
                 db.SaveChanges();
                 setAlert("Thêm tác giả thành công", "success");
-                return RedirectToAction("CreateTheLoaiSach");
+                return RedirectToAction("CreateNXB");
             }
             else
             {

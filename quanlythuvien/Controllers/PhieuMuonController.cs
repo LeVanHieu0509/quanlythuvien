@@ -85,16 +85,18 @@ namespace quanlythuvien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateDetail([Bind(Include ="MaPhieuMuon,SoNgayMuon,HanTra,MaSach,MaPhieuTra")] CT_PHIEUMUONTRA ct_phieumuon)
         {
+            CtPhieuMuonTraModel countTotalSachMuon = new CtPhieuMuonTraModel();
+            var countTotalSachDangMuon = countTotalSachMuon.CountChiTietMuonTra();
+            var ilpPhieuMuon = new PhieuMuonModel();
+            var a = ct_phieumuon.MaPhieuTra;
+            var masach = ct_phieumuon.MaSach;
+            string ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
+            DateTime? NgayMuon = ilpPhieuMuon.ischeckNgayMuon(ct_phieumuon.MaPhieuMuon);
+            DateTime? NgayLapThe = ilpPhieuMuon.ischeckNgayLapThe(ct_phieumuon.MaPhieuMuon);
+            DateTime? NgayHetHanThe = ilpPhieuMuon.ischeckNgayHetHanThe(ct_phieumuon.MaPhieuMuon);
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && (NgayMuon < NgayHetHanThe) && (NgayMuon> NgayLapThe))
             {
-                var a = ct_phieumuon.MaPhieuTra;
-                
-                var masach = ct_phieumuon.MaSach;
-                var ilpPhieuMuon = new PhieuMuonModel();
-                string  ischeckTinhTrang = ilpPhieuMuon.ischeck(masach);
-                DateTime?  ischeckTheDocGia = ilpPhieuMuon.ischeckTheDocGia(masach);
-
                 //setAlert(ischeckTinhTrang, "success");
                 //DangMuon &&ChuaMuon
                 if (ischeckTinhTrang.Trim() == "ChuaMuon") //&& ischeckTheDocGia != null
@@ -115,7 +117,12 @@ namespace quanlythuvien.Controllers
                 }
                 
             }
-            return View(ct_phieumuon);
+            else
+            {
+                setAlert("Bạn Tạo chi tiết phiếu mượn sách thất bại thẻ của bạn hết hạn", "error");
+                return View(ct_phieumuon);
+            }
+            
         }
 
 
@@ -147,7 +154,7 @@ namespace quanlythuvien.Controllers
             }
             catch
             {
-                setAlert("Bạn xóa phiếu mượn sách thất bại", "error");
+                setAlert("Bạn chưa trả sách", "error");
                 return RedirectToAction("Index");
             }
            

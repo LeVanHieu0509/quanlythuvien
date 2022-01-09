@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.MaLoaiDocGia, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.LOAIDOCGIA.TenLoaiDocGia, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @{ Html.RenderAction("ChoosesLoaiDG", "Docgia");}
             @Html.ValidationMessageFor(model => model.MaLoaiDocGia, "", new { @class = "text-danger" })

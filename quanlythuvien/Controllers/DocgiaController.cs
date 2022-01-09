@@ -55,14 +55,16 @@ namespace quanlythuvien.Controllers
             DateTime ngaysinh = Convert.ToDateTime(docgia.NgaySinh);;
             DateTime checkAge = DateTime.Now.AddYears(-18);
             DateTime checkAge2 = DateTime.Now.AddYears(-55);
+            //the co gia tri 6 thang
+            DateTime date = Convert.ToDateTime(docgia.NgayLapThe).AddDays(181);
+            docgia.NgayHetHanThe = date;
+
             //setAlert(added.ToString(), "success");
             if (ModelState.IsValid && ngaysinh < checkAge && ngaysinh > checkAge2)
             {
-                
-                //the co gia tri 6 thang
-                DateTime date = Convert.ToDateTime(docgia.NgayLapThe).AddDays(180);
-                docgia.NgayHetHanThe = date;
                 db.THEDOCGIAs.Add(docgia);
+
+                
                 db.SaveChanges();
                 setAlert("Thêm thẻ độc giả thành công", "success");
                 return RedirectToAction("Index");
@@ -217,6 +219,7 @@ namespace quanlythuvien.Controllers
         {
             if (ModelState.IsValid && db.LOAIDOCGIAs.Count() <= 2)
             {
+                    //var nfDoc = db.LOAIDOCGIAs.Find(loaidocgia.TenLoaiDocGia);
                     db.LOAIDOCGIAs.Add(loaidocgia);
                     db.SaveChanges();
                     setAlert("Thêm loại độc giả thành công", "success");
